@@ -26,6 +26,9 @@
 
   </tbody>
 </table>
+<p><%if (err != null) { %>
+  <%= err %>
+<% } %></p>
 <form  action="/menus" method="post">
 <p> Name: <input type="text" name="name" value="">
 </p>

@@ -6,7 +6,7 @@ router.get('/', (req, res) => {
     include: [{ model: models.Restaurant}]
   }).then((menus) => {
     models.Restaurant.all().then((restaurants) => {
-      res.render('menus/index',{menus: menus, restaurants: restaurants});
+      res.render('menus/index',{menus: menus, restaurants: restaurants,err: null});
     });
   });
 });
@@ -15,6 +15,13 @@ router.post('/', (req, res) => {
   models.Menu.build(req.body).save().then(() => {
     res.redirect('/menus');
   }).catch((err) => {
+    models.Menu.all({
+      include: [{ model: models.Restaurant}]
+    }).then((menus) => {
+      models.Restaurant.all().then((restaurants) => {
+        res.render('menus/index',{menus: menus, restaurants: restaurants,err: err.message});
+      });
+    });
   });
 });
 
