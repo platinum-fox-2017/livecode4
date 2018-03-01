@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Menu Page</title>
+</head>
+<body>
+    <center>
+        <h1>Menu List</h1>
+        <div style="color:red">
+            <%=err%>
+        </div>
+        <div>
+        <form action="menus/add" method="POST" class="menu">
+            <input type="text" name="name" id="name" placeholder="Name">
+            <input type="text" name="menu_type" id="menu_type" placeholder="Menu Type">
+            <input type="text" name="rating" id="rating" placeholder="Rating">
+            <input type="text" name="price" id="price" placeholder="Price">
+            <select class="form-control" name="restaurantId">
+                <%dataRestaurant.map(element => {%>
+                <option value="<%=element.id%>"><%=element.name%></option>
+                <%})%>
+            </select>
+            <button type="submit">Add New Menu</button>
+        </form>
+        </div>
+    </br>
+        <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Menu Type</th>
+                    <th>Rating</th>
+                    <th>Price</th>
+                    <th>Restaurant Id</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map(element=>{ %>
+                <tr>
+                    <td><%=element.id%></td>
+                    <td><%=element.name%></td>
+                    <td><%=element.menu_type%></td>
+                    <td><%=element.rating%></td>
+                    <td><%=currencyHelpers(element.price)%></td>
+                    <td><%=element.restaurantId%></td>
+                    <td>
+                        <a href="menus/<%= element.id %>/edit"><button>Edit</button></a>
+                        <a href="menus/<%= element.id %>/delete"><button onclick="return confirm('Are you sure you want to delete <%=element.name%> ?');">Delete</button></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        </div>
+    </center>
+</body>
+</html>

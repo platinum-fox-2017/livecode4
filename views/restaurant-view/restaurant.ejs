@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Restaurant Page</title>
+</head>
+<body>
+    <center>
+        <h1>Restaurant List</h1>
+    </br>
+        <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map(element=>{ %>
+                <tr>
+                    <td><%=element.id%></td>
+                    <td><%=element.name%></td>
+                    <td><%=element.address%></td>
+                    <td>
+                        <a href="restaurants/<%= element.id %>/view_menu"><button>View Menu</button></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        </div>
+    </center>
+</body>
+</html>
