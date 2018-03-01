@@ -3,7 +3,8 @@ const models = require('../models');
 
 router.get('/', (req, res) => {
   models.Menu.all({
-    include: [{ model: models.Restaurant}]
+    include: [{ model: models.Restaurant}],
+    order: [['id','asc']]
   }).then((menus) => {
     models.Restaurant.all().then((restaurants) => {
       res.render('menus/index',{menus: menus, restaurants: restaurants,err: null});
