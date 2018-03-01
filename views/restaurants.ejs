@@ -1,0 +1,22 @@
+<div>
+    <h1>Restaurants</h1>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th><h3>Id</h3></th>
+            <th><h3>Name</h3></th>
+            <th><h3>Address</h3></th>
+            <th><h3>Action</h3></th>
+        </tr>
+        <%restaurants.forEach(restaurant => {%>
+            <tr>
+                <th><h4><%=restaurant.id%></h4></th>
+                <th><h4><%=restaurant.name%></h4></th>
+                <th><h4><%=restaurant.address%></h4></th>
+                <th><h4><a href="/restaurants/<%=restaurant.id%>/view_menu">View Menu</a></h4></th>
+            </tr>
+        <%})%>
+    </table>
+</div>
