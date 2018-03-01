@@ -8,7 +8,7 @@
 </head>
  <body>
      <h3>Menu Restaurant <%=restaurant.name%></h3>
-     <form action='/restaurants/<%=restaurant.id%>/search' method='get'>
+     <form action='/restaurants/<%=restaurant.id%>/search' method='post'>
     <p>Search by:
     <select name='search_type'>
         <option value="name">name</option>
