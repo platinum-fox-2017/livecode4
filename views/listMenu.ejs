@@ -1,0 +1,68 @@
+<!-- views/listSupplier.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body>
+
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div>
+        <h2>List Menu</h2>
+        <table border='1'>
+            <tr>
+              <th><b>Id.</b></th>
+              <th><b>Name</b></th>
+              <th><b>Menu Type</b></th>
+              <th><b>Rating</b></th>
+              <th><b>Price</b></th>
+              <th><b>Restaurant ID</b></th>
+              <th colspan=2><center><b>Action</b></center></td>
+            </tr>
+                <% let id=1 %>
+                <% menus.forEach(dataMenu => { %>
+            <tr>
+              <td><%= id++ %></td>
+              <td><%= dataMenu.name %></td>
+              <td><%= dataMenu.menu_type %></td>
+              <td><%= dataMenu.rating %></td>
+              <td><%= dataMenu.price %></td>
+              <td><%= dataMenu.RestaurantId %></td>
+
+
+              <td><a href="/menus/<%= dataMenu.id %>/edit">Edit</a></td>
+              <td><a href="/menus/<%= dataMenu.id %>/delete %>" onclick="return confirm('delete this item ?');">Delete</a></td>
+            </tr>
+          <% }) %>
+    </table>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <form action="/menus/">
+                    <input type="submit" value="Add Menu" id="bold" />
+                </form>
+            </td>
+            <td>
+                <form action="/home">
+                    <input type="submit" value="Back" />
+                </form>
+            </td>
+        </tr>
+    </table>
+
+
+
+</main>
+
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>
