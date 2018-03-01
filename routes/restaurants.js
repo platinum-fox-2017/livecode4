@@ -40,7 +40,6 @@ router.post('/:id/view_menu', (req, res) => {
       order: [['id','asc']]
     }]
   }).then((restaurant) => {
-    // res.send(restaurant);
     if (restaurant == null) {
       models.Restaurant.findOne({
         where: {
