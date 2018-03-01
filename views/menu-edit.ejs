@@ -1,0 +1,25 @@
+<form action="/menus/<%= menu.id%>/edit" method="post">
+  <h2>Edit Menu</h2>
+  <p><%= err.msg%></p>
+  <fieldset>
+      <label for="name">Name</label>
+      <input name="name" type="text" placeholder="Name" value="<%= menu.name%>"><br>
+  
+      <label for="menu_type">Menu Type</label>
+      <input name="menu_type" type="text" placeholder="menu_type" value="<%= menu.menu_type%>"><br>
+  
+      <label for="rating">Rating</label>
+      <input name="rating" type="text" placeholder="rating" value="<%= menu.rating%>"><br>
+
+      <label for="price">Price</label>
+      <input name="price" type="text" placeholder="price" value="<%= menu.price%>"><br>
+
+      <label for="RestaurantId">Restaurant</label>
+      <select name="RestaurantId">
+        <%restaurants.forEach((restaurant) => {%>
+          <option value="<%= restaurant.id%>"><%= restaurant.name%></option>
+        <%})%>
+      </select>
+      <button type="submit">Edit Menu</button>
+  </fieldset>
+</form>
