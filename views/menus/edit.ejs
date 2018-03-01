@@ -1,0 +1,23 @@
+<p><%if (err != null) { %>
+  <%= err %>
+<% } %></p>
+<form  action="/menus/<%= menu.id %>/edit" method="post">
+<p> Name: <input type="text" name="name" value="<%= menu.name %>">
+</p>
+<p> Menu Type: <input type="text" name="menu_type" value="<%= menu.menu_type %>">
+</p>
+<p> Rating: <input type="text" name="rating" value="<%= menu.rating %>"> </p>
+<p> Price: <input type="text" name="price" value="<%= menu.price %>"> </p>
+<p> Restaurant:
+  <select  name="RestaurantId" value="<%= menu.RestaurantId %>">
+    <% restaurants.forEach((restaurant) => { %>
+      <% if (restaurant.id == menu.RestaurantId) { %>
+        <option value="<%= restaurant.id %>" selected><%= restaurant.name %></option>
+      <% } else { %>
+        <option value="<%= restaurant.id %>" ><%= restaurant.name %></option>
+      <% } %>
+    <% }) %>
+  </select> </p>
+  <button type="submit" >Submit</button>
+
+</form>

@@ -1,0 +1,48 @@
+
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Menu Type</th>
+    <th>Rating</th>
+    <th>Price</th>
+    <th>Restaurant ID</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <% menus.forEach((menu) => { %>
+      <tr>
+        <td><%= menu.id %></td>
+        <td><%= menu.name %></td>
+        <td><%= menu.menu_type %></td>
+        <td><%= menu.rating %></td>
+        <td><%= helper.format_currency(menu.price)%></td>
+        <td><%= menu.Restaurant.name %></td>
+        <td> <a href="/menus/<%= menu.id %>/edit" > Edit </a>
+         <a href="/menus/<%= menu.id %>/delete" > Delete </a></td>
+      </tr>
+
+    <% }) %>
+
+  </tbody>
+</table>
+<p><%if (err != null) { %>
+  <%= err %>
+<% } %></p>
+<form  action="/menus" method="post">
+<p> Name: <input type="text" name="name" value="<%= input.name %>">
+</p>
+<p> Menu Type: <input type="text" name="menu_type" value="<%= input.menu_type %>">
+</p>
+<p> Rating: <input type="text" name="rating" value="<%= input.rating %>"> </p>
+<p> Price: <input type="text" name="price" value="<%= input.price %>"> </p>
+<p> Restaurant:
+  <select  name="RestaurantId" value="<%= input.RestaurantId%>">
+    <option value="">Pilih Restaurant</option>
+    <% restaurants.forEach((restaurant) => { %>
+      <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
+    <% }) %>
+  </select> </p>
+  <button type="submit" name="button">Submit</button>
+
+</form>
