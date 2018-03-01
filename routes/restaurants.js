@@ -16,7 +16,8 @@ router.get('/:id/view_menu', (req, res) => {
       id: id
     },
     include: [{
-      model: models.Menu
+      model: models.Menu,
+      order: [['id','asc']]
     }]
   }).then((restaurant) => {
     res.render('restaurants/view_menu',{restaurant: restaurant});
@@ -35,7 +36,8 @@ router.post('/:id/view_menu', (req, res) => {
     },
     include: [{
       model: models.Menu,
-      where
+      where,
+      order: [['id','asc']]
     }]
   }).then((restaurant) => {
     // res.send(restaurant);
