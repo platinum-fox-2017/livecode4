@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Menus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Menu Type</th>
+            <th>rating</th>
+            <th>price</th>
+            <th>restaurantId</th>
+            <th>action</th>
+        </thead>
+        <tbody>
+            <% datasMenu.map((data)=>{ %>
+                <tr>
+                    <td>
+                        <%= data.id%>
+                    </td>
+                    <td>
+                        <%= data.name%>
+                    </td>
+                    <td>
+                        <%= data.menu_type%>
+                    </td>
+                    <td>
+                        <%= data.rating%>
+                    </td>
+                    <td>
+                        <%= data.price%>
+                    </td>
+                    <td>
+                        <%= data.Restaurant.name%>
+                    </td>
+                    <td>
+                        <a href="/menus/<%=data.id%>/edit">EDIT</a>
+                        <a href="/menus/<%=data.id%>/delete">DELETE</a>
+                    </td>
+                </tr>
+                <% })%>
+        </tbody>
+    </table>
+    <%= err %>
+        <form action="/menus" method="post">
+            Menu:
+            <br>
+            <input type="text" name="menu">
+            <br> Menu Type:
+            <br>
+            <input type="text" name="menutype">
+            <br> rating:
+            <br>
+            <input type="text" name="rating">
+            <br> price:
+            <br>
+            <input type="text" name="price">
+            <br> Restaurant:
+            <br>
+            <select name="restaurantId">
+                <% datas.map((data)=>{ %>
+                    <option value="<%=data.id%>">
+                        <%=data.name %>
+                    </option>
+                    <%})%>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+</body>
+
+</html>
