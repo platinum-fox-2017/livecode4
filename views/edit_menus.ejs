@@ -1,0 +1,46 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1> <%= err %></h1>
+        <form action="" method="POST">
+            <label>
+                Name
+                <input type="text" name="name" value="<%= menu.name %>">
+            </label>
+            <br>
+            <br>
+            <label>
+                Menu Type
+                <input type="text" name="menu_type" value="<%= menu.menu_type %>">
+            </label>
+            <br>
+            <br>
+            <label>
+                Rating
+                <input type="number" name="rating" value="<%= menu.rating %>">
+            </label>
+            <br>
+            <br>
+            <label>
+                Price
+                <input type="text" name="price" value="<%= menu.price %>">
+            </label>
+            <br>
+            <br>
+            <label>
+                Restaurant
+                <select name="restaurant">
+                    <% restaurants.forEach(restaurant =>{ %>
+                        <option value = "<%=restaurant.id %>"> <%=restaurant.name %> </option>
+                    <%})%>
+                </select>
+            </label>
+            <br>
+            <br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

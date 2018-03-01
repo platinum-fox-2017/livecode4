@@ -1,0 +1,76 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <br>
+        <h1> <%= err %></h1>
+        <table border="1px" style="text-align: center">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Menu Type</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Restaurant ID</th>
+                <th>Action</th>
+            </tr>
+            <% menus.forEach(menu=>{ %>
+                <tr>
+                    <td><%=menu.id%></td>
+                    <td><%=menu.name%></td>
+                    <td><%=menu.menu_type%></td>
+                    <td><%=menu.rating%></td>
+                    <td><%=helper.getPrice(menu.price)%></td>
+                    <td><%=menu.Restaurant.name%></td>
+                    <td>
+                        <a href="/menus/<%= menu.id %>/edit">Edit</a>
+                        <a href="/menus/<%= menu.id %>/delete">Delete</a>
+                    </td>
+                </tr>
+            <%})%>
+        </table>
+
+        <br>
+        <br>
+
+        <form action="" method="POST">
+            <label>
+                Name
+                <input type="text" name="name">
+            </label>
+            <br>
+            <br>
+            <label>
+                Menu Type
+                <input type="text" name="menu_type">
+            </label>
+            <br>
+            <br>
+            <label>
+                Rating
+                <input type="number" name="rating">
+            </label>
+            <br>
+            <br>
+            <label>
+                Price
+                <input type="text" name="price">
+            </label>
+            <br>
+            <br>
+            <label>
+                Restaurant
+                <select name="restaurant">
+                    <% restaurants.forEach(restaurant =>{ %>
+                        <option value = "<%=restaurant.id %>"> <%=restaurant.name %> </option>
+                    <%})%>
+                </select>
+            </label>
+            <br>
+            <br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

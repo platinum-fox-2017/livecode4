@@ -1,0 +1,43 @@
+<html>
+    <head>
+
+    </head>
+    <form action="/restaurants/<%= restaurant.id %>/search" method="POST">
+        <select name="keyword_type">
+            <option value="name">name</option>
+            <option value="menu_type">menu_type</option>
+            <option value="rating">rating</option>
+            <option value="price">price</option>
+        </select>
+        <label>
+            Keyword:
+            <input type ="text" name="keyword">
+        </label>
+        <br>
+        <input type = "submit" value="Submit">
+    </form>
+
+    <br>
+    <body>
+        <h1>Menu : <%= restaurant.name %></h1>
+        <br>
+        <table border="1px" style="text-align: center">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Menu Type</th>
+                <th>Rating</th>
+                <th>Price</th>
+            </tr>
+            <% assocMenus.forEach(assocMenu=>{ %>
+                <tr>
+                    <td><%=assocMenu.id%></td>
+                    <td><%=assocMenu.name%></td>
+                    <td><%=assocMenu.menu_type%></td>
+                    <td><%=assocMenu.rating%></td>
+                    <td><%=helper.getPrice(assocMenu.price)%></td>
+                </tr>
+            <%})%>
+        </table>
+    </body>
+</html>
