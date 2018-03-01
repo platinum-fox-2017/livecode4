@@ -6,6 +6,16 @@
     <a href="/menus">Menu</a></br>
     <a href="/restaurants">Restaurant</a>
     <h2>List Menu in <%= data[0].name %></h2>
+    <form action="" method="post">
+      <select name="search">
+        <option value="name">name</option>
+        <option value="menu_type">menu_type</option>
+        <option value="rating">rating</option>
+        <option value="price">price</option>
+      </select>
+      <input type="text" value="" name="input">
+      <input type="submit">
+    </form></br>
     <table>
       <thead>
         <th>ID</th>

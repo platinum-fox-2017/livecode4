@@ -20,7 +20,19 @@ routes.get('/:id/menu',function(req,res){
         data: dataRest
       }
       res.render('restaurants/menu.ejs',obj)
-      // res.send(dataRest)
+    })
+})
+
+routes.post('/:id/menu',function(req,res){
+  models.Restaurant.findAll({
+    include:[{model:models.Menu}],
+    where:{
+    }
+  }).then((dataRest)=>{
+      let obj = {
+        data: dataRest
+      }
+      res.render('restaurants/menu.ejs',obj)
     })
 })
 
