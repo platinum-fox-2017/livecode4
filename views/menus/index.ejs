@@ -30,14 +30,14 @@
   <%= err %>
 <% } %></p>
 <form  action="/menus" method="post">
-<p> Name: <input type="text" name="name" value="">
+<p> Name: <input type="text" name="name" value="<%= input.name %>">
 </p>
-<p> Menu Type: <input type="text" name="menu_type" value="">
+<p> Menu Type: <input type="text" name="menu_type" value="<%= input.menu_type %>">
 </p>
-<p> Rating: <input type="text" name="rating" value=""> </p>
-<p> Price: <input type="text" name="price" value=""> </p>
+<p> Rating: <input type="text" name="rating" value="<%= input.rating %>"> </p>
+<p> Price: <input type="text" name="price" value="<%= input.price %>"> </p>
 <p> Restaurant:
-  <select  name="RestaurantId">
+  <select  name="RestaurantId" value="<%= input.RestaurantId%>">
     <option value="">Pilih Restaurant</option>
     <% restaurants.forEach((restaurant) => { %>
       <option value="<%= restaurant.id %>"><%= restaurant.name %></option>
