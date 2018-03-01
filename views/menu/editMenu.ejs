@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <%- include('../partials/header')  %>
+    <form method="POST">
+        Name:<br>
+        <input type="text" name="name" value="<%= menu.name %>"><br>
+        Menu Type:<br>
+        <input type="text" name="menu_type" value="<%= menu.menu_type %>"><br>
+        Rating:<br>
+        <input type="number" name="rating" value="<%= menu.rating %>"><br>
+        Price:<br>
+        <input type="number" name="price" value="<%= menu.price %>"><br>
+        Restaurant:
+        <select name="RestaurantId">
+            <% restaurant.forEach((listName) => { %>    
+                <option value="<%= listName.id %>"><%= listName.name %></option>
+            <% }) %>
+        </select>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <%- include('../partials/footer')  %>
+</body>
+</html>

@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Menu.associate = function(models) {
     // associations can be defined here
+    Menu.belongsTo(models.Restaurant);
   };
   return Menu;
 };

@@ -2,10 +2,10 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-    res.send('Harusnya berisi Homepage')
+    res.render('./index.ejs')
 })
 
-router.use('/menu', require('./menu.js'))
+router.use('/menus', require('./menu.js'))
 router.use('/restaurant', require('./restaurant.js'))
 
 
