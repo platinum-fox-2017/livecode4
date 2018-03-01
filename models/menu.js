@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
          }
       }
     },
-    rating: DataTypes.INTEGER,
-    price: DataTypes.INTEGER
+    rating: DataTypes.STRING,
+    price: DataTypes.STRING
   }, {
     validate: {
       maxVariantFood(done) {
@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
           }).done((count) => {
             if (count >= 5) {
               done( new Error('Varian Food Sudah Maksimal'));
+            } else {
+              done();
             }
           })
         } else {

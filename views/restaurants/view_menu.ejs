@@ -1,0 +1,36 @@
+<h1>Menu Restaurant :
+   <%=restaurant.name %>
+ </h1>
+  <form  action="/restaurants/<%= restaurant.id %>/view_menu" method="post">
+<p>Search By :
+    <select name="search_type" >
+      <option value="name">name</option>
+      <option value="menu_type">menu_type</option>
+      <option value="rating">rating</option>
+      <option value="price">price</option>
+    </select>
+    Keyword:
+    <input type="text" name="keyword" value=""> <br>
+    <button type="submit" >Submit</button>
+</p>
+  </form>
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Menu Type</th>
+    <th>Rating</th>
+    <th>Price</th>
+  </thead>
+  <tbody>
+    <% restaurant.Menus.forEach((menu) => { %>
+      <tr>
+        <td><%= menu.id %></td>
+        <td><%= menu.name %></td>
+        <td><%= menu.menu_type %></td>
+        <td><%= menu.rating %></td>
+        <td><%= helper.format_currency(menu.price )%></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

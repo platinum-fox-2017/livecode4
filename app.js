@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 // const router = require('./routes/index');
 const menus = require('./routes/menus');
+const restaurants = require('./routes/restaurants');
 
 
 app.set('views', __dirname+'/views/');
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
 //routes
 // app.use('/', router);
 app.use('/menus',menus);
+app.use('/restaurants',restaurants);
 
 
 
