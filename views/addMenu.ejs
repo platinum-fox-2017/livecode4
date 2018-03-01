@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <h2>ADD MENU</h2>
+  <% if (err){%>
+    <%=err.message%>
+  <%}%>
+  <body>
+    <form class="" action="/menus/add" method="post"><br>
+      <input type="text" name="name" value="" placeholder="menu name here"><br>
+      <input type="text" name="menu_type" value="" placeholder="menu_type name here"><br>
+      <input type="text" name="rating" value="" placeholder="rating name here"><br>
+      <input type="text" name="price" value="" placeholder="price name here"><br>
+      <h5>Restoran</h5>
+      <select class="" name="restaurantId"><br>
+        <%dataRestaurant.forEach(data=>{%>
+          <option value="<%=data.id%>"><%=`${data.name}`%></option>
+        <%})%>
+      </select>
+      <input type="submit" name="" value="Submit Menu"><br>
+    </form>
+  </body>
+</html>
