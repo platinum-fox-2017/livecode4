@@ -118,7 +118,18 @@ class MenuController {
   }
 
   static menuDeletePage(req,res){
-
+    db.Menu.destroy(
+      {
+        where: {
+          id:req.params.id
+        },
+        individualHooks: true
+      }
+    ).then(()=>{
+      res.redirect('/menus')
+    }).catch(err=>{
+      console.log('---delete---'+err);
+    })
   }
 
 }

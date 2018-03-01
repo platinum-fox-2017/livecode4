@@ -1,6 +1,6 @@
 "use strict"
 const MenuController = require('./MenuController.js')
-// const ControllerB = require('./ControllerB.js')
+const RestaurantController = require('./RestaurantController.js')
 // const ControllerC = require('./ControllerC.js')
 
 class Controller {
@@ -17,7 +17,7 @@ class Controller {
 
 module.exports = {
   Controller: Controller,
-  MenuController: MenuController
-  // ControllerB: ControllerB,
+  MenuController: MenuController,
+  RestaurantController: RestaurantController
   // ControllerC:ControllerC
 };
