@@ -28,8 +28,8 @@
                             <td><%= menus[j].name %></td>
                             <td><%= menus[j].menu_type %></td>
                             <td><%= menus[j].rating %></td>
-                            <td><%= menus[j].price %></td>
-                            <td><%= menus[j].RestaurantId %></td>
+                            <td><%= helper.formatCurrency(menus[j].price) %></td>
+                            <td><%= menus[j].Restaurant.name %></td>
                             <td>
                                 <button><a href='/menus/<%= menus[j].id %>/edit'>Edit</a></button>
                                 <button onclick="return confirm('Delete record?')"><a href='/menus/<%= menus[j].id %>/delete'>Delete</a></button>

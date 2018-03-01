@@ -3,6 +3,8 @@ const app = express()
 const port = 3000
 const menus = require('./routes/menu')
 
+app.locals.helper = require('./helpers/formatcurrency.js')
+
 app.get('/', (req, res) => {
     res.send('hello')
 })

@@ -8,11 +8,14 @@ menu.use(bodyParser.urlencoded({extended:false}))
 
 menu.get('/', (req, res) => {
     model.Restaurant.findAll({
-        order: [['id', 'ASC']]
+        order: [['id', 'ASC']],
     }).then(restaurants => {
         // res.send(restaurants)
-        model.Menu.findAll()
+        model.Menu.findAll({
+            include: {model: model.Restaurant}
+        })
         .then(foodlist => {
+            // res.send(foodlist)
             res.render('menu.ejs', {menus: foodlist, restaurant: restaurants})
         })
     })
