@@ -63,21 +63,22 @@ menu.get('/:id/edit', (req, res) => {
 })
 
 menu.post('/:id/edit', (req, res) => {
-    model.Menu.update({
-        name: req.body.name,
-        menu_type: req.body.menu_type,
-        rating: req.body.rating,
-        price: req.body.price,
-        RestaurantId: req.body.RestaurantId
-    }, {
-        where: {id: req.params.id}
+    model.Menu.findById(req.params.id)
+    .then(data => {
+        data.update({
+            name: req.body.name,
+            menu_type: req.body.menu_type,
+            rating: req.body.rating,
+            price: req.body.price,
+            RestaurantId: req.body.RestaurantId
+        })
+        .then(()=>{
+            res.redirect('/menus')
+        })
+        .catch(error => {
+            res.redirect(`/menus/${req.params.id}/edit?err=${error.message}`)
+        }) 
     })
-    .then(()=>{
-        res.redirect('/menus')
-    })
-    .catch(error => {
-        res.redirect(`/menus/${req.params.id}/edit?err=${error.message}`)
-    }) 
 })
 
 menu.get('/:id/delete', (req,res) => {
