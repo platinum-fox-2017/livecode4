@@ -32,6 +32,41 @@ router.post('/', function(request,response) {
                })
 })
 
+router.get('/:id/edit', function(request,response) {
+    response.render('./editmenu.ejs');
+})
+
+router.post('/:id/edit', function(request,response) {
+    let id = request.params.id;
+
+    var obj = {
+        name: request.body.name,
+        menu_type: request.body.menu_type,
+        rating: request.body.rating,
+        price: request.body.price,
+        restaurantId: request.body.restaurantId,
+    }
+    
+    models.Menu.update(obj, {where: {id: id}})
+            .then(() => {
+                response.redirect('/menus');
+                console.log('Successfully updated menu data'); 
+            })
+
+})
+
+
+router.get('/:id/delete', function(request,response) {
+    let id = request.params.id
+
+    models.Menu.destroy({where: {id: id}})
+    .then(() => {  
+        // console.log();
+        response.redirect('/menus');
+    })
+    
+})
+
 
 
 
