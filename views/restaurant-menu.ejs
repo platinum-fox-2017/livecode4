@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>restaurant detail</title>
+  </head>
+  <body>
+    <label>Search by :</label>
+    <form action="/restaurants/<%= restaurant.id %>/view_menu" method="post">
+      <select name="prop">
+          <% key.forEach(data => { %>
+          <option value="<%= data %>"> <%= data %> </option>
+          <% }) %>
+      </select>
+      <label>Keyword :</label>
+      <input type="text" name="prop" value="">
+      <input type="submit" class="btn" value="submit">
+    </form>
+    <label>Keyword: </label>
+    <table>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Menu Type</th>
+        <th>Rating</th>
+        <th>Price</th>
+      </tr>
+      <% restaurant.Menus.forEach(menu => { %>
+      <tr>
+        <td><%= menu.id %></td>
+        <td><%= menu.name %></td>
+        <td><%= menu.menu_tye %></td>
+        <td><%= menu.rating %></td>
+        <td><%= menu.price %></td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
