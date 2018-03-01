@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Menu</title>
+  </head>
+  <body>
+    <%if(error){%>
+      <%=error.message%>
+    <%}%>
+    <form class="" action="/menus/<%=menus.id%>/edit" method="post">
+      Name: <input type="text" name="name" value="<%=menus.name%>"></br>
+      Menu Type: <input type="text" name="menu_type" value="<%=menus.menu_type%>"></br>
+      Rating: <input type="text" name="rating" value="<%=menus.rating%>"></br>
+      Price: <input type="text" name="price" value="<%=menus.price%>"></br>
+      Restaurant: <select class="" name="restaurantId">
+        <%restaurants.forEach(restaurant=>{%>
+          <option value="<%=restaurant.id%>"><%=restaurant.name%></option>
+        <%})%>
+      </select></br>
+      <button type="submit" name="button">Submit</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>List Menu</title>
+  </head>
+  <div class="">
+    <body>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Menu Type</th>
+            <th>Rating</th>
+            <th>Price</th>
+            <th>restaurant ID</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%menus.forEach(menu=>{%>
+            <tr>
+              <td><%=menu.id%></td>
+              <td><%=menu.name%></td>
+              <td><%=menu.menu_type%></td>
+              <td><%=menu.rating%></td>
+              <td><%=menu.price%></td>
+              <td><%=menu.restaurantId%></td>
+              <td>
+                <a href="/menus/<%=menu.id%>/edit">Edit</a>
+                <a href="/menus/<%=menu.id%>/delete">Delete</a>
+              </td>
+            </tr>
+          <%})%>
+          </tbody>
+        </table>
+      </body>
+  </div>
+  <div class="">
+    <%if(error){%>
+      <%=error.message%>
+    <%}%>
+    <body>
+      <form class="" action="/menus" method="post">
+        Name: <input type="text" name="name" value=""></br>
+        Menu Type: <input type="text" name="menu_type" value=""></br>
+        Rating: <input type="text" name="rating" value=""></br>
+        Price: <input type="text" name="price" value=""></br>
+        Restaurant: <select class="" name="restaurantId">
+          <%restaurants.forEach(restaurant=>{%>
+            <option value="<%=restaurant.id%>"><%=restaurant.name%></option>
+          <%})%>
+        </select></br>
+        <button type="submit" name="button">Submit</button>
+      </form>
+    </body>
+  </div>
+</html>
