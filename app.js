@@ -8,6 +8,8 @@ const menus = require('./routes/menus');
 app.set('views', __dirname+'/views/');
 app.set('view engine', 'ejs');
 
+app.locals.helper = require('./helpers/index');
+
 //body parser
 app.use(bodyParser.urlencoded({
   extended: false
