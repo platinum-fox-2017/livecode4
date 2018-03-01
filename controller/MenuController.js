@@ -25,11 +25,8 @@ class MenuController {
     })
   }
 
-
-
-
   static menuAddPagePost(req,res){
-    console.log(req.body);
+    // console.log(req.body);
     db.Menu.create({
       name: req.body.name,
       menu_type: req.body.menu_type,
@@ -42,7 +39,9 @@ class MenuController {
       res.redirect('/menus')
     }).catch(err=>{
       db.Menu.findAll({
-
+        include: [
+          {model: db.Restaurant}
+        ]
       }).then(foundMenus => {
         // res.send(foundMenu)
         db.Restaurant.findAll({

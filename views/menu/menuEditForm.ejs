@@ -13,7 +13,7 @@
       <% if (err) { %>
         <h4><%= err.message %><h4>
       <% } %>
-      <form action="/items/edit/<%= menuID %>" method="post">
+      <form action="/menus/<%= menuID %>/edit" method="post">
 
         Name:<br>
         <input type="text" name="name" value="<%= foundMenu.name %>"><br>
