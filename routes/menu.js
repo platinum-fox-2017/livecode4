@@ -9,10 +9,11 @@ router.get('/', (req,res) => {
     .then(menus => {
         Models.Restaurant.findAll()
         .then(restaurant => {
-            res.render('../views/menu/listMenu.ejs', {menus: menus, restaurant:restaurant})
+            res.render('../views/menu/listMenu.ejs', {menus: menus, restaurant:restaurant, err:null})
+            // res.send(menus)
         })
         .catch(err => {
-            res.send(err)
+            res.redirect('../views/menu/listMenu.ejs', {menus:menus, restaurant:restaurant, err: err.message});
         })
     })
     .catch(err => {
@@ -82,8 +83,7 @@ router.post('/', (req,res) => {
         res.redirect('/menus')
     })
     .catch((err) => {
-        res.send(err);
-        // res.render('./menus/addMen.ejs', {err: err.message});
+        res.render('../views/menu/listMenu.ejs', {err: err.message});
     })
     // res.send(req.body);
 })

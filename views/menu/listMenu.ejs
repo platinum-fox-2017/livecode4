@@ -4,6 +4,7 @@
 </head>
 <body>
         <%- include('../partials/header')  %>
+        
     <table border=1 cellspacing=0 cellpadding=10>
         <tr>
             <th>Id</th>
@@ -21,7 +22,7 @@
             <td><%= list.menu_type %></td>
             <td><%= list.rating %></td>
             <td><%= helpers.format_currency(list.price) %></td>
-            <td><%= list.RestaurantId%></td>
+            <td><%= list.Restaurant.name%></td>
             <td><a href="/menus/<%= list.id %>/edit">Edit</a>   <a href="/menus/<%= list.id %>/delete">Delete</a></td>
         </tr>
         <% }) %>
@@ -29,6 +30,8 @@
 
     <br>
 
+    <%= err %> 
+    
     <form method="POST">
         Name:
         <input type="text" name="name"><br>
@@ -39,6 +42,7 @@
         Price:
         <input type="number" name="price"><br>
         Restaurant:
+
 
         <select name="RestaurantId">
             <% restaurant.forEach((listName) => { %>    
