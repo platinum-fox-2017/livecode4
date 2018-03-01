@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <meta charset="utf-8"
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    <center>
+      <h1>List Menu</h1>
+    </center>
+    <br>
+    <br>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Menu Type</th>
+            <th>Rating</th>
+            <th>Price</th>
+            <th>Restauran ID</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <%data_menu.forEach((data, i) =>{%>
+              <tr>
+                <td><%=i+1%></td>
+                <td><%=data.name%></td>
+                <td><%=data.menu_type%></td>
+                <td><%=data.rating%></td>
+                <td><%= helper.ubahAgka(data.price) %></td>
+                <td><%=data.Restaurant.name%></td>
+                <td>
+                  <a href="/menus/edit/<%=data.id%>" class="btn btn-info">Edit</a>
+                  <a href="/menus/delete/<%=data.id%>" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+              <%})%>
+            </tbody>
+    </div>
+    </table>
+    <body>
+      <center>
+        <h1>Add new Menu</h1>
+      </center>
+      <div class="container">
+          <form class="form-group" action="/menus/add" method="post">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" name="name" placeholder="Enter Name" class="form-control" value="">
+            </div>
+            <div class="form-group">
+              <label for="menu_type">Menu Type:</label>
+              <input type="text" name="menu_type" placeholder="Enter Menu Type" class="form-control" value="">
+            </div>
+            <div class="form-group">
+              <label for="rating">Rating:</label>
+              <input type="text" name="rating" placeholder="Enter Rating" class="form-control" value="">
+            </div>
+            <div class="form-group">
+              <label for="price">Price:</label>
+              <input type="text" name="price" placeholder="Enter Price" class="form-control" value="">
+            </div>
+            <div class="form-group">
+              <label for="id_restaurant">Restaurant ID:</label>
+              <select name="id_restaurant">
+                  <%data_rest.forEach((data) =>
+                  {%>
+                    <option value="<%=data.id%>"> <%=data.name%> </option>
+                  <%})%>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="/menus" class="btn btn-danger">Cancel</a>
+          </form>
+      </div>
+    </body>
+  </body>
+</html>
