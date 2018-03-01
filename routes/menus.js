@@ -2,7 +2,11 @@ const routes = require('express').Router()
 const Models = require('../models')
 
 routes.get('/', (req, res) => {
+  console.log(req.query)
   // res.status(200).json({message: 'Connected!'})
+  let err = {
+    msg: req.query.err
+  }
   Models.Menu.findAll({
     include: [{
       model: Models.Restaurant
@@ -11,7 +15,7 @@ routes.get('/', (req, res) => {
     Models.Restaurant.findAll()
       .then((restaurants) => {
         // res.send(menus)
-        res.render('menus.ejs', {restaurants: restaurants, menus: menus})
+        res.render('menus.ejs', {restaurants: restaurants, menus: menus, err: err})
       }).catch(err => {
         console.log(err)
       })
@@ -32,18 +36,23 @@ routes.post('/', (req, res) => {
   Models.Menu.create(addMenu).then(() => {
     res.redirect('/menus')
   }).catch(err => {
+    res.redirect(`/menus?err=${err.message}`)
     console.log(err)
   })
 })
 
 routes.get('/:id/edit', (req, res) => {
+  console.log(req.query)
+  let err = {
+    msg: req.query.err
+  }
   Models.Menu.findById(req.params.id)
     .then(menu => {
       Models.Restaurant.findAll()
         .then((restaurants) => {
           // res.send(restaurants)
           // res.send(menu)
-          res.render('menu-edit.ejs', {restaurants: restaurants, menu: menu})
+          res.render('menu-edit.ejs', {restaurants: restaurants, menu: menu, err: err})
         }).catch(err => {
           console.log(err)
         })
@@ -69,7 +78,8 @@ routes.post('/:id/edit', (req, res) => {
   }).then(() => {
     res.redirect('/menus')
   }).catch(err => {
-    console.log(err)
+    res.redirect(`/menus/${req.params.id}/edit?err=${err.message}&name=${editMenu.name}&menu_type=${editMenu.menu_type}&rating=${editMenu.rating}&price=${editMenu.price}&RestaurantId=${editMenu.RestaurantId}`)
+    // console.log(err)
   })
 })
 

@@ -1,5 +1,6 @@
 <form action="/menus/<%= menu.id%>/edit" method="post">
   <h2>Edit Menu</h2>
+  <p><%= err.msg%></p>
   <fieldset>
       <label for="name">Name</label>
       <input name="name" type="text" placeholder="Name" value="<%= menu.name%>"><br>
