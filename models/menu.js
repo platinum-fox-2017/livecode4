@@ -13,7 +13,26 @@ module.exports = (sequelize, DataTypes) => {
     },
     rating: DataTypes.INTEGER,
     price: DataTypes.INTEGER
-  }, {});
+  }, {
+    validate: {
+      maxVariantFood(done) {
+        if (this.menu_type == 'food') {
+          Menu.count({
+            where: {
+              menu_type : this.menu_type,
+              RestaurantId: this.RestaurantId
+            }
+          }).done((count) => {
+            if (count >= 5) {
+              done( new Error('Varian Food Sudah Maksimal'));
+            }
+          })
+        } else {
+          done();
+        }
+      }
+    }
+  });
   Menu.associate = function(models) {
     // associations can be defined here
     Menu.belongsTo(models.Restaurant);

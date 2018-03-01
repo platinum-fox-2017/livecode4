@@ -15,6 +15,7 @@ router.post('/', (req, res) => {
   models.Menu.build(req.body).save().then(() => {
     res.redirect('/menus');
   }).catch((err) => {
+    console.log(err);
     models.Menu.all({
       include: [{ model: models.Restaurant}]
     }).then((menus) => {
@@ -51,6 +52,15 @@ router.post('/:id/edit', (req, res) => {
 });
 
 router.get('/:id/delete', (req, res) => {
+  let id = req.params.id;
+  models.Menu.findById(id).then((menu) => {
+    return menu.destroy();
+  }).then(() => {
+    res.redirect('/menus');
+  }).catch(() => {
+    res.redirect('/menus');
+
+  });
 
 });
 module.exports = router;
