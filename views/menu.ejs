@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table border='1'>
+      <tr>
+        <th>nama</th>
+        <th>menu_type</th>
+        <th>rating</th>
+        <th>price</th>
+        <th>restaurant_Id</th>
+        <th colspan=2>action</th>
+      </tr>
+
+        <% for(let i=0;i<data.length;i++){%>
+          <tr>
+            <td><%= data[i].nama%></td>
+            <td><%= data[i].menu_type%></td>
+            <td><%= data[i].rating%></td>
+            <td><%- helper.formatuang(data[i].price)%></td>
+            <td><%= data[i].restaurant.nama%></td>
+            <td> <a href="/menus/update/<%= data[i].id %>">update</a> </td>
+            <td> <a href="/menus/delete/<%= data[i].id %>">delete</a> </td>
+          </tr>
+        <%}%>
+
+    </table>
+    <p style="color:red"><%= error.err %></p>
+    <form class="" action="/menus/add" method="post">
+      <table>
+        <tr>
+          <td>nama</td>
+          <td> <input type="text" name="nama" value=""> </td>
+        </tr>
+        <tr>
+          <td>menu_type</td>
+          <td> <input type="text" name="menu_type" value=""> </td>
+        </tr>
+        <tr>
+          <td>rating</td>
+          <td> <input type="text" name="rating" value=""> </td>
+        </tr>
+        <tr>
+          <td>price</td>
+          <td> <input type="text" name="price" value=""> </td>
+        </tr>
+        <tr>
+          <td>restaurant</td>
+          <td>
+            <select class="" name="restaurant_id">
+              <% for(let i=0;i<restaurant.length;i++){ %>
+              <option value="<%= restaurant[i].id%>"><%= restaurant[i].nama%></option>
+              <%}%>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td> <input type="submit" name="" value="submit"> </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

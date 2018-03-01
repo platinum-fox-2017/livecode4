@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>name</th>
+        <th>address</th>
+        <th>action</th>
+      </tr>
+      <% for(let i=0;i<data.length;i++){%>
+        <tr>
+          <td><%= data[i].nama%></td>
+          <td><%= data[i].address %></td>
+          <td> <a href="/restaurants/viewmenu/<%= data[i].id %>">view menu</a> </td>
+        </tr>
+      <%}%>
+    </table>
+  </body>
+</html>
