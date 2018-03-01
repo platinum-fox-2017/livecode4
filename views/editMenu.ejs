@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./header %>
+</header>
+<main>
+    <div class="jumbotron">
+        <h2>Edit Menu</h2>
+        <form name="form" method="POST" action="/menus/edit/<%= menus.id %>">
+            <table>
+                <tr>
+                <td>Menu Name</td>
+                <td><input type="text" name="menu_name" value="<%= menus.name %>"></td>
+                </tr>
+                <tr>
+                <td>Menu Type</td>
+                <td><input type="text" name="menu_type" value="<%= menus.menu_type %>"></td>
+                </tr>
+                <tr>
+                <td>Rating</td>
+                <td><input type="text" name="rating" value="<%= menus.rating %>"></td>
+                </tr>
+                <td>Price</td>
+                <td><input type="text" name="price" value="<%= menus.price %>"></td>
+                </tr>
+            
+                <td colspan="2"><input type="submit" value="SAVE" ></td>
+                </tr>
+                
+            </table>
+            </form>
+    </div>
+</main>
+        <tr>    
+            <td><a href="/menus">Back</a></td>
+        </tr>
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>

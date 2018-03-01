@@ -1,4 +1,3 @@
-<!-- views/listSupplier.ejs -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +31,7 @@
               <td><%= dataMenu.menu_type %></td>
               <td><%= dataMenu.rating %></td>
               <td><%= dataMenu.price %></td>
-              <td><%= dataMenu.RestaurantId %></td>
+              <td><%= dataMenu.Restaurant.name %></td>
 
 
               <td><a href="/menus/<%= dataMenu.id %>/edit">Edit</a></td>
@@ -41,20 +40,53 @@
           <% }) %>
     </table>
     </div>
-    <table>
-        <tr>
-            <td>
-                <form action="/menus/">
-                    <input type="submit" value="Add Menu" id="bold" />
+    <div>
+        <table>
+            <form name="form" method="POST" action="/menus/">
+                <table>
+                    <tr>
+                        <td>Menu Name</td>
+                        <td><input type="text" name="menu_name"></td>
+                    </tr>
+                    <tr>
+                        <td>Menu Type</td>
+                        <td><input type="text" name="menu_type"></td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td><input type="text" name="rating"></td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td><input type="text" name="price"></td>
+                    </tr>
+                    <tr>
+                        <td>Restaurant</td>
+                        <td><select name="restoId">
+            
+                        <% menus.forEach((restoname) => { %>
+                            <option value=<%= restoname.Restaurant.id %>><%= restoname.Restaurant.name %></option>
+                        <%})%>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <form action="/menus/">
+                                <input type="submit" value="Add Menu" id="bold" />
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/home">
+                                <input type="submit" value="Back" />
+                            </form>
+                        </td>
+                    </tr>
+                </table>
                 </form>
-            </td>
-            <td>
-                <form action="/home">
-                    <input type="submit" value="Back" />
-                </form>
-            </td>
-        </tr>
-    </table>
+        </table>
+    </div>
+    
 
 
 
