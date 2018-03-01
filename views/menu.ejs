@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>menu list</title>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Menu Type</th>
+            <th>Rating</th>
+            <th>Price</th>
+            <th>Restaurant ID</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <% menus.forEach(menu => { %>
+          <tr>
+            <td><%= menu.id %></td>
+            <td><%= menu.name %></td>
+            <td><%= menu.menu_type %></td>
+            <td><%= menu.rating %></td>
+            <td><%= menu.price %></td>
+            <td><%= menu.restaurantId %></td>
+            <td>
+              <a href="/menus/<%= menu.id %>/edit">Edit</a>
+              <a href="/menus/<%= menu.id %>/delete" onclick="return confirm (`Are you sure to delete this item?`)">Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+        </table>
+        <form action="/menus" method="post">
+          <label for="name">Name :</label><br>
+          <input type="text" name="name" value="" placeholder="name"><br>
+          <label for="menu_type">Menu type :</label><br>
+          <input type="text" name="menu_type" value="" placeholder="menu type"><br>
+          <label for="rating">Rating :</label><br>
+          <input type="number" name="rating" value="" placeholder="rating"><br>
+          <label for="price">Price :</label><br>
+          <input type="number" name="price" value="" placeholder="price"><br>
+          <label for="restaurant">Restaurant: </label><br>
+          <select name="restaurantId">
+            <% restaurants.forEach(resto => { %>
+            <option value="<%= resto.id %>"> <%= resto.name %> </option>
+            <% }) %>
+          </select><br><br>
+          <input type="submit" name="add menu" value="submit">
+        </form>
+    </div>
+  </body>
+</html>
