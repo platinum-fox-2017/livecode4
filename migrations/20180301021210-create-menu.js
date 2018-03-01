@@ -14,6 +14,7 @@ module.exports = {
       menu_type: {
         type: Sequelize.STRING
       },
+      //rating dan price di buat string karena nanti di pakai untuk search dengan ilike, (harus string)
       rating: {
         type: Sequelize.STRING
       },
