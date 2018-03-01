@@ -1,0 +1,49 @@
+<table border="1">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>MenuType</td>
+            <td>Rating</td>
+            <td>Price</td>
+            <td>RestaurantID</td>
+            <td>Action</td>
+        </tr>
+        <% for(let i=0; i<data.length; i++){ %>
+        <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].menu_type %></td>
+            <td><%= data[i].rating %></td>
+            <td><%= helpers.formatRupiah(data[i].price) %></td>
+            <td><%= data[i].Restaurant.name %></td>
+            <td>
+                <a href="/menus/<%= data[i].id %>/edit">EDIT</a> | 
+                <a href="/menus/<%= data[i].id %>/delete">DELETE</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+    
+    <br><br><br>
+    
+    <form method="POST" action="/menus/<%= dataEdit.id %>/edit">
+        Name:
+        <input value="<%= dataEdit.name %>" type="text" name="nama"><br><br>
+        Menu Type:
+        <input value="<%= dataEdit.menu_type %>" type="text" name="type"><br><br>
+        Rating:
+        <input value="<%= dataEdit.rating %>" type="text" name="rating"><br><br>
+        Price:
+        <input value="<%= dataEdit.price %>" type="text" name="price"><br><br>
+        Restaurant:
+        <select name="selectresto">
+            <% for(let r=0; r<dataRes.length; r++){%>
+                <% if(dataEdit.RestaurantId === dataRes[r].id) {%>
+                    <option value="<%= dataRes[r].id %>" selected><%= dataRes[r].name %></option>
+                <% } else { %>
+                    <option value="<%= dataRes[r].id %>"><%= dataRes[r].name %></option>
+                <% } %>
+            <% } %>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
