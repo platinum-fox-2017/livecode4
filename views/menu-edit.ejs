@@ -3,6 +3,9 @@
 
     </head>
     <body>
+        <% if(err != ''){ %>
+            <p style="color: red"><%= err %></p>
+        <% } %>
         <form method="POST" action="/menus/<%= menu.id %>/edit">
             Name:
             <input type="text" name="name" value="<%= menu.name %>">
@@ -14,7 +17,7 @@
             <input type="text" name="rating" value="<%= menu.rating %>">
             <br>
             price:
-            <input type="text" name="price" value="<%= helper.formatUang(menu.price) %>">
+            <input type="text" name="price" value="<%= menu.price %>">
             <br>
             Restaurant: 
             <select name="RestaurantId">

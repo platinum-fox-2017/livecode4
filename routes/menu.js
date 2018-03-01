@@ -2,11 +2,18 @@ const routes = require('express').Router();
 const models = require('../models');
 
 routes.get('/', (req,res)=>{
+    let err = '';
     models.Menu.findAll()
         .then(menus => {
             models.Restaurant.findAll()
                 .then(restaurants => {
-                    res.render('menu.ejs', {menus: menus, restaurants: restaurants});
+                    if(req.query.err != ''){
+                        err = req.query.err;
+                        res.render('menu.ejs', {menus: menus, restaurants: restaurants, err: err});
+                    }else{
+                        res.render('menu.ejs', {menus: menus, restaurants: restaurants, err: err});
+                    }
+                    
                 })
         })
 })
@@ -24,17 +31,24 @@ routes.post('/', (req,res)=>{
             res.redirect('/menus');
         })
         .catch(err=>{
-            console.log(err)
+            res.redirect(`/menus?err=${err.message}`)
         })
 })
 
 routes.get('/:id/edit', (req,res)=>{
+    let err = ''
     models.Menu.findOne({where:{id: req.params.id}})
         .then(menu => {
             menu.getRestaurant()
                 .then(restaurant => {
-                    res.render('menu-edit.ejs', {menu: menu, restaurant: restaurant});
+                    if(req.query.err != ''){
+                        err = req.query.err;
+                        res.render('menu-edit.ejs', {menu: menu, restaurant: restaurant, err: err});
+                    }else{
+                        res.render('menu-edit.ejs', {menu: menu, restaurant: restaurant, err: err});
+                    }
                 })
+
         })
 })
 
@@ -49,6 +63,9 @@ routes.post('/:id/edit', (req,res)=>{
     models.Menu.update(obj, {where:{id: req.params.id}})
         .then(menu => {
             res.redirect('/menus')
+        })
+        .catch(err => {
+            res.redirect(`/menus/${req.params.id}/edit?err=${err.message}`)
         })
 })
 

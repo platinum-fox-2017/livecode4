@@ -40,6 +40,9 @@
             </tbody>
         </table>
         <br><br>
+        <% if(err != ''){ %>
+            <p style="color: red"><%= err %></p>
+        <% } %>
         <form method="POST" action="/menus">
             Name:
             <input type="text" name="name">
