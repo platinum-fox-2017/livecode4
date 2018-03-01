@@ -16,31 +16,34 @@
         <th>Action</th>
       </thead>
       <tbody>
-        <% if(men.dataMenu!==null){ %>
-          <% for(let i=0; i<men.dataMenu.length; i++){ %>
+        <% if(obj.data!==null){ %>
+          <% for(let i=0; i<obj.data.length; i++){ %>
             <tr>
-              <td><%= men.dataMenu[i].id %><td>
-              <td><%= men.dataMenu[i].name %><td>
-              <td><%= men.dataMenu[i].menu_type %><td>
-              <td><%= men.dataMenu[i].rating %><td>
-              <td><%= men.dataMenu[i].price %><td>
-              <td><%= men.dataMenu[i].RestaurantId %><td>
+              <td><%= obj.data[i].id %><td>
+              <td><%= obj.data[i].name %><td>
+              <td><%= obj.data[i].menu_type %><td>
+              <td><%= obj.data[i].rating %><td>
+              <td><%= obj.data[i].price %><td>
+              <td><%= obj.data[i].Restaurant.name %><td>
               <td>
-                <a href="/menus/<%= men.dataMenu[i].id %>/edit">Edit</a>
-                <a href="/menus/<%= men.dataMenu[i].id %>/delete">Delete</a>
+                <a href="/menus/<%= obj.data[i].id %>/edit">Edit</a>
+                <a href="/menus/<%= obj.data[i].id %>/delete">Delete</a>
               </td>
             </tr>
           <% } %>
         <% } %>
       </tbody>
     </table>
+    <%= err %>
     <form action="" method="post">
       <input type="text" value="" name="newName" placeholder="add name">
       <input type="text" value="" name="newMenuType" placeholder="add menu type">
       <input type="text" value="" name="newRating" placeholder="add rating">
       <input type="text" value="" name="newPrice" placeholder="add price">
       <select name="newResId">
-
+        <option value="1">Hokben</option>
+        <option value="2">Mekdi</option>
+        <option value="3">Kaefci</option>
       </select>
       <input type="submit">
     </form>

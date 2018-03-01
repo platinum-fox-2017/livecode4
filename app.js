@@ -7,6 +7,8 @@ app.set('view engine','ejs')
 
 app.use(bodyParser.urlencoded({extended:false}))
 
+app.locals.helper = require('./helpers/index.js')
+
 app.use('/',routes)
 
 app.listen(3000,()=>{
