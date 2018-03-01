@@ -6,6 +6,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.set('view engine', 'ejs')
 
+app.use(express.static('public'))
+app.locals.helper = require('./helper')
+
 app.use('/', require('./routes'))
 
 

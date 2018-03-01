@@ -19,8 +19,8 @@
                     <td><%= listMenu[i].name %></td>
                     <td><%= listMenu[i].menu_type %></td>
                     <td><%= listMenu[i].rating %></td>
-                    <td><%= listMenu[i].price %></td>
-                    <td><%= listMenu[i].restaurantId %></td>
+                    <td><%= helper.format_currency(listMenu[i].price) %></td>
+                    <td><%= listMenu[i].Restaurant.name %></td>
                     <td><a href="/menus/<%=listMenu[i].id%>/edit">Edit</a> | <a href="/menus/<%=listMenu[i].id%>/delete">Delete</a></td>
                 </tr>
             <% } %>

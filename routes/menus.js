@@ -4,11 +4,16 @@ const router = express.Router();
 const models = require('../models');
 
 router.get('/', function(request,response) {
-    models.Menu.findAll().then(listMenu => {
+    models.Menu.findAll({
+        include: [
+          {model: models.Restaurant}  
+        ],
+    }).then(listMenu => {
         // projects will be an array of all Project instances
         let obj = {
             listMenu: listMenu
         };
+        // response.send(listMenu)
         response.render('./showmenu.ejs', obj);
     })
 })
