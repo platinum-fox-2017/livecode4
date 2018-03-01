@@ -5,9 +5,9 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING
   },{
     validate:{
-      maxFood:function(resto,menu){
+      maxFood:function(idresto,menu){
         sequelize.models.Restaurant.findOne({
-          where:{id:id}
+          where:{id:idresto}
         })
       }
     }
