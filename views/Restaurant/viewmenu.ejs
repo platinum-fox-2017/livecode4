@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../partials/metaHead'); %>
+    <title>Restaurant Menu</title>
+</head>
+<body>
+    <a href="/restaurant/view/<%=restoData.id%>/back">Back Cuy</a>
+    <h1>Menu Restaurant: <%=restoData.name%></h1>
+    <h4>Search By: </h4> 
+    <form action="/restaurant/view/<%=restoData.id%>/search" method="POST">
+        <select name="key" id="">
+            <option value="name">name</option>
+            <option value="menuType">menu type</option>
+            <option value="rating">rating</option>
+            <option value="price">price</option>
+        </select>
+        <label for="">KeyWord:</label>
+        <input name="keyWord" type="text">
+        <button type="submit">Submit</button>
+    </form> 
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Menu Type</td>
+                <td>Rating</td>
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <%menuData.forEach(element =>{%>
+                <tr>
+                    <td><%=element.id%></td>
+                    <td><%=element.name%></td>
+                    <td><%=element.menuType%></td>
+                    <td><%=element.rating%></td>
+                    <td><%=helper(element.price)%></td>
+                </tr>
+            <%})%>
+        </tbody>
+    </table>
+</body>
+</html>
