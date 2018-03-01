@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <%- include ../partials/menu.ejs %>
+      <h1>List Menu</h1>
+      <a href="/menus/add">Add</a>
+      <table border='1'>
+          <tr>
+            <td><center>Id.</center></td>
+            <td><center>Name</center></td>
+            <td><center>Menu Type</center></td>
+            <td><center>Rating</center></td>
+            <td><center>Price</center></td>
+            <td><center>Restaurant ID</center></td>
+            <td colspan=2><center>Options</center></td>
+          </tr>
+        <% let i=1 %>
+        <% data.forEach(data =>{ %>
+          <tr>
+            <td><%= i++ %></td>
+            <td><%= data.name %></td>
+            <td><%= data.menu_type %></td>
+            <td><%= data.rating %></td>
+            <td><%= my_helper.formatuang(data.price) %></td>
+            <td><%= data.Restaurant.name %></td>
+            <td><a href="/menus/update/<%= data.id %>">Update</a></td>
+            <td><a href="/menus/delete/<%= data.id %>" onclick="return confirm('delete this ?');">Delete</a></td>
+          </tr>
+        <% })%>
+      </table>
+
+      <a href="/">Back</a>
+  </body>
+</html>

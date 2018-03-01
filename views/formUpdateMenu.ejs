@@ -1,0 +1,29 @@
+<body>
+    <%- include ../partials/menu.ejs %>
+    <h1>Update Menu</h1>
+
+    <form name="form" method="POST" action="/menus/update/<%= data.id %>">
+    <table>
+        <input type="hidden" name="id" required></td>
+        <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" value="<%= data.name %>" required></td>
+        </tr>
+        <tr>
+        <td>Menu Type</td>
+        <td><input type="text" name="menu_type"  value="<%= data.menu_type %>"  required></td>
+        </tr>
+        <tr>
+        <td>Rating</td>
+        <td><input type="text" name="rating"  value="<%= data.rating %>"  required></td>
+        </tr>
+        <tr>
+        <td>Price</td>
+        <td><input type="text" name="price" value="<%= data.price %>"  required></td>
+        </tr>
+
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+</body>

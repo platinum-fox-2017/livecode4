@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form name="form" method="POST" action="/menus/search/">
+    <tr>
+    <td>Search</td>
+    <td><select name="searchMenu">
+        <option value="" selected> </option>
+        <option value="name"> name </option>
+          <option value="menu_type"> meny type </option>
+        <option value="menu_type">rating </option>
+        <option value="menu_type">price </option>
+
+      </select></td>
+      <input type="text" name="keyword">
+    </tr>
+
+    <table border='1'>
+        <tr>
+          <td><center>Id.</center></td>
+          <td><center> Name</center></td>
+          <td><center>Menu Type</center></td>
+          <td><center>Rating</center></td>
+          <td><center>Price</center></td>
+
+
+        </tr>
+
+        <% let i=1 %>
+        <%data.forEach(data =>{%>
+          <tr>
+            <td><%=i++%></td>
+            <td><%=data.name%></a></td>
+            <td><%=data.menu_type%></a></td>
+            <td><%=data.rating%></a></td>
+            <td><%=data.price%></a></td>
+
+
+        </tr>
+        <%});%>
+    </table>
+  </body>
+</html>

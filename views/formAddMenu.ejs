@@ -1,0 +1,44 @@
+<body>
+    <%- include ../partials/menu.ejs %>
+    <h1>Add Menu</h1>
+    <p style ="color:red"><%= data_error.error %></p>
+    <form name="form" method="POST" action="/menus/add">
+    <table>
+      <input type="hidden" name="id" required></td>
+
+
+        <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" required></td>
+        </tr>
+        <tr>
+        <td>Menu Type</td>
+        <td><input type="text" name="menu_type" required></td>
+        </tr>
+        <tr>
+        <td>Rating</td>
+        <td><input type="text" name="rating" required></td>
+        </tr>
+        <tr>
+        <td>Price</td>
+        <td><input type="text" name="price" required></td>
+        </tr>
+        <tr>
+        <td>Restaurant</td>
+        <td><select name="RestaurantId">
+            <option value="" selected> </option>
+          <%data.forEach((data) =>
+          {
+            %>
+            <option value="<%= data.id %>"> <%=data.name%> </option>
+          <%})%>
+          </select></td>
+        </tr>
+
+        <tr>
+
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+</body>
