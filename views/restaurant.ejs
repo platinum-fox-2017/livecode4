@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="utf-8"
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    <center>
+      <h1>List Restaurant</h1>
+    </center>
+    <br>
+    <br>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <%data_rest.forEach((data, i) =>{%>
+              <tr>
+                <td><%=i+1%></td>
+                <td><%=data.name%></td>
+                <td><%=data.address%></td>
+                <td>
+                  <a href="/restaurants/<%=data.id%>/view_menu" class="btn btn-info">View Menu</a>
+                </td>
+              </tr>
+              <%})%>
+            </tbody>
+    </div>
+    </table>
+  </body>
+</html>
