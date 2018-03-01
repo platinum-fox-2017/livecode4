@@ -24,7 +24,7 @@
             <td><%= menu.name %></td>
             <td><%= menu.menu_type %></td>
             <td><%= menu.rating %></td>
-            <td><%= menu.price %></td>
+            <td><%= format(menu.price) %></td>
             <td><%= menu.restaurantId %></td>
             <td>
               <a href="/menus/<%= menu.id %>/edit">Edit</a>
@@ -32,7 +32,8 @@
             </td>
           </tr>
           <% }) %>
-        </table>
+        </table><br><br>
+        <%= error %>
         <form action="/menus" method="post">
           <label for="name">Name :</label><br>
           <input type="text" name="name" value="" placeholder="name"><br>

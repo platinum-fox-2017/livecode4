@@ -1,8 +1,9 @@
-const express     = require('express')
-const router      = express.Router()
-const Model       = require('../models')
-const Menu        = Model.Menu
-const Restaurant  = Model.Restaurant
+const express           = require('express')
+const router            = express.Router()
+const Model             = require('../models')
+const Menu              = Model.Menu
+const Restaurant        = Model.Restaurant
+const format            = require('../helpers/helper')
 
 
 router.get('/', (req, res) => {
@@ -12,8 +13,8 @@ router.get('/', (req, res) => {
   .then(menus => {
     Restaurant.findAll()
     .then(restaurants => {
-      // res.send({menus, restaurants})
-      res.render('menu', { menus, restaurants })
+      res.render('menu', { menus, restaurants, error: null, format })
+      // res.send({ menus, restaurants, err: true, format })
     })
     .catch(err => {
       console.log(err);
@@ -26,12 +27,26 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   let objMenu = req.body
+  console.log(objMenu);
   Menu.create(objMenu)
   .then(() => {
     res.redirect('/menus')
   })
   .catch(err => {
-    console.log(err);
+    Menu.findAll()
+    .then(menus => {
+      Restaurant.findAll()
+      .then(restaurants => {
+        res.render('menu', { menus, restaurants, error: err.errors[0].message, format })
+        // res.send({ error: err.errors[0].message })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
   })
 })
 
