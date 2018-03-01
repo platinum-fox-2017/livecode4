@@ -34,9 +34,15 @@ routes.post('/', function(req, res){
 
 
 routes.get('/:id/edit', function(req, res){
-    models.Menu.findById(req.params.id).then(menus => {
-        res.render('editMenu', {menus: menus})
+    models.Menu.findById(req.params.id)
+    .then(menus => {
+        // res.render('editMenu', {menus: menus})
+        // res.send(menus)
+        menus.getRestaurant()
     })
+    // .then(menuResto => {
+    //     // res.send(menuResto.name)
+    // })
 })
 
 routes.post('/:id/edit', function(req, res){

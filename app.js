@@ -18,8 +18,11 @@ app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 
 
+
 app.use('/', index)
 app.use('/menus', menus)
+
+app.locals.helpers = require('./helpers')
 
 app.listen(port, log =>{
   console.log(`App is running on port: ${port}`)

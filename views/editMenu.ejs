@@ -15,19 +15,29 @@
         <form name="form" method="POST" action="/menus/edit/<%= menus.id %>">
             <table>
                 <tr>
-                <td>Menu Name</td>
-                <td><input type="text" name="menu_name" value="<%= menus.name %>"></td>
+                    <td>Menu Name</td>
+                    <td><input type="text" name="menu_name" value="<%= menus.name %>"></td>
                 </tr>
                 <tr>
-                <td>Menu Type</td>
-                <td><input type="text" name="menu_type" value="<%= menus.menu_type %>"></td>
+                    <td>Menu Type</td>
+                    <td><input type="text" name="menu_type" value="<%= menus.menu_type %>"></td>
                 </tr>
                 <tr>
-                <td>Rating</td>
-                <td><input type="text" name="rating" value="<%= menus.rating %>"></td>
+                    <td>Rating</td>
+                    <td><input type="text" name="rating" value="<%= menus.rating %>"></td>
                 </tr>
-                <td>Price</td>
-                <td><input type="text" name="price" value="<%= menus.price %>"></td>
+                    <td>Price</td>
+                    <td><input type="text" name="price" value="<%= menus.price %>"></td>
+                </tr>
+                <tr>
+                    <td>Restaurant</td>
+                    <td><select name="restoId">
+        
+                    <% menus.forEach((restoname) => { %>
+                        <option value=<%= restoname.Restaurant.id %>><%= restoname.Restaurant.name %></option>
+                    <%})%>
+                    </select>
+                    </td>
                 </tr>
             
                 <td colspan="2"><input type="submit" value="SAVE" ></td>
