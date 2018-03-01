@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  <title>Menu</title>
+</head>
+<body>
+  <div class = "container">
+    <h1>List Products</h1>
+      <table class = "table">
+    <thead>
+      <tr class ="info">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Menu Type</th>
+        <th>Rating</th>
+        <th>Price</th>
+        <th>Restaurant ID</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%dataMenu.forEach(data => {%>
+      <tr>
+        <td><%=data.id%></td>
+        <td><%=data.name%></td>
+        <td><%=data.menu_type%></td>
+        <td><%=data.rating%></td>
+        <td><%=format.format_currency(data.price)%></td>
+        <td><%=data.Restaurant.name%></td>
+        <td><a href = '/menus/<%=data.id%>/edit'><button type='button' class='btn btn-info'>Edit</button></a>  <a href = '/menus/<%=data.id%>/delete' ><button type='button' class='btn btn-danger'>Delete</button></a> </td>
+      </tr>
+    <%})%>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <form action='/menus' method = 'post'>
+    <label>Name</label></br>
+    <input type ='text' placeholder='name...' class='form-control'  name='name'> </br>
+    <label>Menu Type</label></br>
+    <input type ='text' placeholder='type' class='form-control'  name='menu_type'> </br>
+    <label>Rating</label></br>
+    <input type ='number' placeholder='ex 1' class='form-control'  name='rating'> </br>
+    <label>Price</label></br>
+    <input type ='number' placeholder='ex 1' class='form-control'  name='price'> </br>
+    <label>Restaurant</label></br>
+    <select name = "RestaurantId">
+      <%dataResto.forEach(list=>{%>
+        <option value="<%=list.id%>"><%=list.name%></option>
+      <%})%>
+        
+    </select>
+    </br>
+    <button type='submit' class='btn btn-success'> Add Menu </button>
+  </form> 
+  </center>
+   </div>
+</body>
+</html>
+
+
