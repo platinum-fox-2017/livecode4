@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     RestaurantId : DataTypes.INTEGER,
   },{
     hooks:{
-      beforeCreate:function(Menu,options){
+      afterCreate:function(Menu,options){
         console.log(Menu)
         if(Menu.menu_type === 'food'&& Menu.price === 0 || Menu.price === null){
           this.price = 15000
