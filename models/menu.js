@@ -18,5 +18,20 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Menu.belongsTo(models.Restaurant);
   };
+  Menu.beforeCreate((menu, options) => {
+    if (menu.menu_type == 'food' && menu.price == 0) {
+      menu.price = 15000;
+    } else if (menu.menu_type == 'drink' && menu.price == 0) {
+      menu.price = 10000;
+    }
+  });
+
+  Menu.beforeUpdate((menu, options) => {
+    if (menu.menu_type == 'food' && menu.price == 0) {
+      menu.price = 15000;
+    } else if (menu.menu_type == 'drink' && menu.price == 0) {
+      menu.price = 10000;
+    }
+  });
   return Menu;
 };

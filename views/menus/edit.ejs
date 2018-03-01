@@ -1,3 +1,6 @@
+<p><%if (err != null) { %>
+  <%= err %>
+<% } %></p>
 <form  action="/menus/<%= menu.id %>/edit" method="post">
 <p> Name: <input type="text" name="name" value="<%= menu.name %>">
 </p>
@@ -15,6 +18,6 @@
       <% } %>
     <% }) %>
   </select> </p>
-  <button type="submit" name="button">Submit</button>
+  <button type="submit" >Submit</button>
 
 </form>
