@@ -2,6 +2,23 @@
   <body>
     <table>
       <h2>Menu Restaurant</h2>
+      <form action="/restaurants/<%= restaurant.id%>/view_menu" method="post">
+        <fieldset>
+          <label for="searchBy">Search By:</label>
+          <select name="searchBy">
+              <option value="name">name</option>
+              <option value="menu_type">menu_type</option>
+              <option value="rating">rating</option>
+              <option value="price">price</option>
+          </select>
+  
+          <label for="keyword">Keyword: </label>
+          <input name="keyword" type="text" placeholder="Keyword" value=""><br><br>
+      
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+      
       <thead>
         <th>Id</th>
         <th>Name</th>

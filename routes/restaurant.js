@@ -27,7 +27,7 @@ routes.get('/:id/view_menu', (req, res) => {
       })
         .then((menus) => {
           // res.send(menus)
-          res.render('view_menu.ejs', {menus: menus})
+          res.render('view_menu.ejs', {menus: menus, restaurant: restaurant})
         }).catch(err => {
           console.log(err)
         })
