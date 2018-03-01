@@ -12,7 +12,7 @@ router.get('/',function(req,res){
   }).then(data=>{
     Restaurant.findAll().then(listRestaurant=>{
       // res.send(data)
-      res.render('menu/list_menu',{dataMenu:data,dataResto:listRestaurant,format:currency})
+      res.render('menu/list_menu',{dataMenu:data,dataResto:listRestaurant,format:currency,error:null})
     })
   }).catch(err=>{
     res.send(err)
@@ -21,10 +21,20 @@ router.get('/',function(req,res){
 
 router.post('/',function(req,res){
   console.log(req.body)
-  Menu.create(req.body).then(data=>{
+  Menu.create(req.body,{
+    individualHook:true
+  }).then(data=>{
     res.redirect('/menus')
   }).catch(err=>{
-    res.send(err)
+    Menu.findAll({
+      include:[Restaurant]
+    }).then(data=>{
+      Restaurant.findAll().then(listRestaurant=>{
+        // res.send(data)
+        res.render('menu/list_menu',{dataMenu:data,dataResto:listRestaurant,format:currency,error:err.errors[0].message})
+      })
+    })
+    // res.render('menu/list_menu',{dataMenu:data,error:err.errors[0].message})
   })
 })
 

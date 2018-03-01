@@ -3,6 +3,14 @@ module.exports = (sequelize, DataTypes) => {
   var Restaurant = sequelize.define('Restaurant', {
     name: DataTypes.STRING,
     address: DataTypes.STRING
+  },{
+    validate:{
+      maxFood:function(resto,menu){
+        sequelize.models.Restaurant.findOne({
+          where:{id:id}
+        })
+      }
+    }
   });
 
   Restaurant.associate = function(models){

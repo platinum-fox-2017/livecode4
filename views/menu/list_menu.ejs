@@ -40,6 +40,11 @@
   <br/>
   <br/>
   <form action='/menus' method = 'post'>
+    <%if(error !== null){%>
+      <div class='alert alert-danger'>
+      <strong>Validation Error!</strong> <%=error%>
+      </div>
+      <%}%>
     <label>Name</label></br>
     <input type ='text' placeholder='name...' class='form-control'  name='name'> </br>
     <label>Menu Type</label></br>
@@ -62,5 +67,3 @@
    </div>
 </body>
 </html>
-
-
