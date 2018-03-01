@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../../partials/head %>
+</head>
+<body>
+  <% include ../../partials/header %>
+
+  <div class="container">
+    <% if(status == 1) { %>
+    <div class="alert alert-success">
+      <strong>Success!</strong> <%= message %>
+    </div>
+    <% } else if(status == 0) { %>
+    <div class="alert alert-danger">
+      <strong>Error!</strong> <%= message %>
+    </div>
+    <% } %>
+
+    <h3>List Menu</h3>
+    
+    <table class="table">
+      <!-- <input type="button" onclick="location.href='/items/add/';" class="btn btn-success pull-right" value="Add Menu" /> -->
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Menu Type</th>
+          <th>Rating</th>
+          <th>Price</th>
+          <th>Restaurant ID</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < menus.length; i++) { %>
+        <tr>
+          <td><%= menus[i].id %></td>
+          <td><%= menus[i].name %></td>
+          <td><%= menus[i].menu_type %></td>
+          <td><%= menus[i].rating %></td>
+          <td><%= helpers.format_currency(menus[i].price) %></td>
+          <td><%= menus[i].Restaurant.name %></td>
+          <td><a href="/menus/<%= menus[i].id %>/edit">Edit</a>&nbsp;&nbsp;<a href="/menus/<%= menus[i].id %>/delete" onclick="return confirm('Delete This Item?')">Delete</a></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <form class="form-horizontal" action="" method="post">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="name" name="name" type="text" placeholder="Input Menu Name">
+            </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Menu Type</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="menu_type" name="menu_type" type="text" placeholder="Input Menu Type">
+            </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Rating</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="rating" name="rating" type="text" placeholder="Input Rating">
+            </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Price</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="price" name="price" type="text" placeholder="Input Price">
+            </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Restaurant</label>
+            <div class="col-sm-5">
+              <select name="restaurant_id">
+                <option value="-1">-- Select Restaurant --</option>
+                <% for (let i = 0; i < restaurants.length; i++) { %>
+                <option value="<%= restaurants[i].id %>"><%= restaurants[i].name %></option>
+                <% } %>
+              </select>
+            </div>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Add Menu" style="margin-left: 200px" />
+    </form>
+  </div>
+
+</body>
+</html>
