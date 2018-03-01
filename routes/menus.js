@@ -53,7 +53,8 @@ router.post('/:id/edit',function(req,res){
   let id = req.params.id
   console.log(id)
   Menu.update(req.body,{
-    where:{id:id}
+    where:{id:id},
+    individualHooks:true
   }).then(data=>{
     res.redirect('/menus')
   }).catch(err=>{
