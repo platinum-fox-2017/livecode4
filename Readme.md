@@ -61,7 +61,7 @@ Logic untuk format currency nya : 45000.toLocaleString() //output: 45,000
 
 ## Challenge 8
 
-8. buat default value untuk price menggunakan hooks, apabila type nya food dan price nya 0, maka default value nya 15000. Apabila type nya drink dan price nya 0, maka default value nya 10000. pastikan default value ini bekerja ketika create dan update data.
+8. buat default value untuk price menggunakan hooks, apabila type nya food dan price nya 0, maka default value nya 1. Apabila type nya drink dan price nya 0, maka default value nya 10000. pastikan default value ini bekerja ketika create dan update data.
 
 ## Challenge 9
 

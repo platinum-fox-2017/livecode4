@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <%- include('../partials/metaHead'); %>
+    <title>Menu</title>
+</head>
+<body>
+    <a href="/menu/back">Balik Cuy</a>
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Menu Type</td>
+                <td>Rating</td>
+                <td>Price</td>
+                <td>Restaurant</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <%dataMenu.forEach(element =>{%>
+                <tr>
+                    <td><%=element.id%></td>
+                    <td><%=element.name%></td>
+                    <td><%=element.menuType%></td>
+                    <td><%=element.rating%></td>
+                    <td><%=element.price%></td>
+                    <td><%=element.Restaurant.name%></td>
+                    <td>
+                        <a href="/menu/edit/<%=element.id%>">edit</a>
+                        <a href="/menu/delete/<%=element.id%>" onclick="return confirm('Yakin mau delete Menu Ini?\n Klik cancel untuk membatalkan')">delete</a>
+                    </td>
+                </tr>
+            <%})%>
+        </tbody>
+    </table>
+    <br><br><br>
+    <form action="/menu" method="POST">
+        <div class="bd-snippet-preview" style="width:50%"> 
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input name="name" class="input is-success" type="text" placeholder="Text input">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Menu Type</label>
+                <div class="control">
+                    <input name="menuType"class="input is-success" type="text" placeholder="Food or Drink">
+                </div>
+                <%if(err && err.menuType){%>
+                    <p class="help is-success" style="color:red"><%=err.menuType%></p>
+                <%}%>
+                <%if(err && err.RestaurantId){%>
+                    <p class="help is-success" style="color:red"><%=err.RestaurantId%></p>
+                <%}%>
+            </div>
+                  
+            <div class="field">
+                <label class="label">Rating</label>
+                <div class="control">
+                    <input name="rating" class="input is-success" type="numer" placeholder="Rate It">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Price</label>
+                <div class="control">
+                    <input name="price" class="input is-success" type="numer" placeholder="Price It">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Restaurant</label>
+                <div class="control">
+                    <div class="select">
+                        <select name="restaurantId" id="">
+                            <%for(let [index,value] of restaurantData.entries()){%>
+                                <option value="<%=value.id%>"><%=value.name%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-link">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

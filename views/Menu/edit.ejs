@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <%- include('../partials/metaHead'); %>
+    <title>Edit</title>
+</head>
+<body>
+    <a href="/menu/edit/<%=menuData.id%>/back">Back cuy</a>
+    <form action="/menu/edit/<%=menuData.id%>" method="POST">
+        <%if(err){%>
+            <%for(let [index,value] of err.entries()){%>
+                <span><%=value.message%></span>
+            <%}%>
+        <%}%>
+        <input name="name" type="text" value="<%=menuData.name%>">
+        <input name="menuType" type="text" value="<%=menuData.menuType%>">
+        <input name="rating" type="number" value="<%=menuData.rating%>">
+        <input name="price" type="number" value="<%=menuData.price%>">
+        <select name="RestaurantId" id="">
+            <%for(let[index,value] of restoData.entries()){%>
+                <option value="<%=value.id%>"><%=value.name%></option>
+            <%}%> 
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
