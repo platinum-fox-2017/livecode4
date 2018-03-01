@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <div>
+            <h1>Menu Restaurant: <%= data[0].name %></h1>
+            <form method="POST" action="/restaurants/<%= data[0].id %>/search">
+                Search by: 
+                <select name = "Search">
+                    <option value="name">name</option>
+                    <option value="menu_type">menu_type</option>
+                    <option value="rating">rating</option>
+                    <option value="price">price</option>
+                </select>
+                Keyword:
+                <input type="text" name="Keyword">
+                <br>
+                <input type="submit"value="Submit">
+            </form>
+            <br>
+
+            <table>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Menu Type</td>
+                    <td>Rating</td>
+                    <td>Price</td>
+                </tr>
+                <% for (let i = 0; i < data[0].Menus.length; i++){ %>
+                    <tr>
+                        <td><%= data[0].Menus[i].id %></td>
+                        <td><%= data[0].Menus[i].name %></td>
+                        <td><%= data[0].Menus[i].menu_type %></td>
+                        <td><%= data[0].Menus[i].rating %></td>
+                        <td><%= data[0].Menus[i].price %></td>
+
+                    </tr>
+                <% } %>
+            </table>
+            <button><a href="/restaurants">Back</a></button>
+        </div>
+    </body>
+</html>

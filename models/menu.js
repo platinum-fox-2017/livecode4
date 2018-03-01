@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         is: {
-          args: /^(food|drink)$/i,
+          args: /^(food|drink)$/,
           msg: 'Isi menu type dengan food/drink'
         }
       }
