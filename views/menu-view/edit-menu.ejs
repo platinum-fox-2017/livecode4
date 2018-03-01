@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Menu Page</title>
+</head>
+<body>
+    <center>
+        <h1>Edit Menu</h1>
+        <div>
+        <form action="/menus/<%=data.id%>/edit" method="POST" class="menu">
+            <input type="text" name="name" id="name" placeholder= "Name" value="<%=data.name%>">
+            <input type="text" name="menu_type" id="menu_type" placeholder="Menu Type" value="<%=data.menu_type%>">
+            <input type="text" name="rating" id="rating" placeholder="Rating" value="<%=data.rating%>">
+            <input type="text" name="price" id="price" placeholder="Price" value="<%=data.price%>">
+            <select class="form-control" name="restaurantId">
+                <%dataRestaurant.map(element => {%>
+                <option value="<%=element.id%>"><%=element.name%></option>
+                <%})%>
+            </select>
+            <button type="submit">Update Menus Data</button>
+        </form>
+        </div>
+    </center>
+</body>
+</html>
