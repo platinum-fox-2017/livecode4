@@ -1,7 +1,7 @@
 {
   "name": "express-sequelize-final",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Challenge 1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,6 +13,14 @@
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "pg": "^7.4.1",
-    "sequelize": "^4.34.1"
-  }
+    "sequelize": "^4.35.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platinum-fox-2017/livecode4.git"
+  },
+  "bugs": {
+    "url": "https://github.com/platinum-fox-2017/livecode4/issues"
+  },
+  "homepage": "https://github.com/platinum-fox-2017/livecode4#readme"
 }
