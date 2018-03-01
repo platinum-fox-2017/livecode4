@@ -1,0 +1,21 @@
+<h2>Menu Restaurant : <%=menu[0].Restaurant.name%></h2>
+<table border="1">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Menu Type</th>
+        <th>Rating</th>
+        <th>Price</th>
+    </thead>
+    <tbody>
+        <%menu.forEach(data=>{%>
+            <tr>
+                <td><%=data.id%></td>
+                <td><%=data.name%></td>
+                <td><%=data.menu_type%></td>
+                <td><%=data.rating%></td>
+                <td><%=formatCurrency(data.price)%></td>
+            </tr>
+        <%})%>
+    </tbody>
+</table>

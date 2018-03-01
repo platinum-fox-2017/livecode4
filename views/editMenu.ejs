@@ -1,0 +1,13 @@
+<form action="/menus/edit/<%=menu.id%>" method="POST">
+    Name :<input type="text" name="name" value="<%=menu.name%>"><br>
+    Menu Type :<input type="text" name="menu_type" value="<%=menu.menu_type%>"><br>
+    Rating :<input type="text" name="rating" value="<%=menu.rating%>"><br>
+    Price :<input type="text" name="price" value="<%=menu.price%>"><br>
+    Restaurant :
+    <select name="id_restaurant">
+        <%restaurant.forEach(datares=>{%>
+            <option value="<%=datares.id%>"><%=datares.name%></option>
+        <%})%>
+    </select><br/>
+    <button>Submit</button>
+</form>

@@ -1,0 +1,45 @@
+<table border="1">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Menu Type</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Restaurat ID</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        <%menu.forEach(data=>{%>
+            <tr>
+                <td><%=data.id%></td>
+                <td><%=data.name%></td>
+                <td><%=data.menu_type%></td>
+                <td><%=formatCurrency(data.price)%></td>
+                <td><%=data.rating%></td>
+                <td><%=data.Restaurant.name%></td>
+                <td>
+                    <a href="/menus/edit/<%=data.id%>">edit</a>
+                    <a href="/menus/delete/<%=data.id%>">delete</a>
+                </td>
+            </tr>
+        <%})%>
+    </tbody>
+</table>
+<br>
+<br>
+<%if (error !== null){%>
+    <%=error%>
+<%}%>
+<form action="/menus/add" method="POST">
+    Name :<input type="text" name="name"><br>
+    Menu Type :<input type="text" name="menu_type"><br>
+    Rating :<input type="text" name="rating"><br>
+    Price :<input type="text" name="price"><br>
+    Restaurant :
+    <select name="id_restaurant">
+        <%restaurant.forEach(data=>{%>
+            <option value="<%=data.id%>"><%=data.name%></option>
+        <%})%>
+    </select><br/>
+    <button>Submit</button>
+</form>
