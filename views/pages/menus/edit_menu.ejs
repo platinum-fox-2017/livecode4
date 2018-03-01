@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../../partials/head %>
+</head>
+<body>
+	<% include ../../partials/header %>
+
+	<div class="container">
+		<% if(status == 1) { %>
+		<div class="alert alert-success">
+			<strong>Success!</strong> <%= message %>
+		</div>
+		<% } else if(status == 0) { %>
+		<div class="alert alert-danger">
+			<strong>Error!</strong> <%= message %>
+		</div>
+		<% } %>
+		<h3>Edit Menu</h3>
+		<form class="form-horizontal" action="" method="post">
+	      <div class="form-group">
+	        <label class="col-sm-2 control-label">Name</label>
+	            <div class="col-sm-5">
+	              <input class="form-control" id="name" name="name" type="text" value="<%= menu.name %>">
+	            </div>
+	      </div>
+	      <div class="form-group">
+	        <label class="col-sm-2 control-label">Menu Type</label>
+	            <div class="col-sm-5">
+	              <input class="form-control" id="menu_type" name="menu_type" type="text" value="<%= menu.menu_type %>">
+	            </div>
+	      </div>
+	      <div class="form-group">
+	        <label class="col-sm-2 control-label">Rating</label>
+	            <div class="col-sm-5">
+	              <input class="form-control" id="rating" name="rating" type="text" value="<%= menu.rating %>">
+	            </div>
+	      </div>
+	      <div class="form-group">
+	        <label class="col-sm-2 control-label">Price</label>
+	            <div class="col-sm-5">
+	              <input class="form-control" id="price" name="price" type="text" value="<%= menu.price %>">
+	            </div>
+	      </div>
+	      <div class="form-group">
+	        <label class="col-sm-2 control-label">Restaurant</label>
+	            <div class="col-sm-5">
+	              <select name="restaurant_id">
+	                <option value="-1">-- Select Restaurant --</option>
+	                <% for (let i = 0; i < restaurants.length; i++) { 
+	                	let selected = ( menu.RestaurantId == restaurants[i].id ) ? 'selected' : '';
+	                %>
+	                <option value="<%= restaurants[i].id %>" <%= selected %>><%= restaurants[i].name %></option>
+	                <% } %>
+	              </select>
+	            </div>
+	      </div>
+	      <input type="submit" class="btn btn-primary" value="Edit Menu" style="margin-left: 200px" />
+	    </form>
+	</div>
+</body>
+</html>

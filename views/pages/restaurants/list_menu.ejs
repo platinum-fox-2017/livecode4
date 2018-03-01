@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../../partials/head %>
+</head>
+<body>
+  <% include ../../partials/header %>
+
+  <div class="container">
+    <% if(status == 1) { %>
+    <div class="alert alert-success">
+      <strong>Success!</strong> <%= message %>
+    </div>
+    <% } else if(status == 0) { %>
+    <div class="alert alert-danger">
+      <strong>Error!</strong> <%= message %>
+    </div>
+    <% } %>
+
+    <h3>Menu Restaurant <span><%= restaurant.name %></span></h3>
+
+    <form class="form-horizontal" action="/restaurants/<%= restaurant.id %>/search" method="post">
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Search by</label>
+            <div class="col-sm-5">
+              <select name="search_by">
+                <option value="name">name</option>
+                <option value="menu_type">menu_type</option>
+                <option value="rating">rating</option>
+                <option value="price">price</option>
+              </select>
+            </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Keyword</label>
+            <div class="col-sm-5">
+              <input class="form-control" id="keyword" name="keyword" type="text" placeholder="Input Keyword">
+            </div>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Search" style="margin-left: 200px" />
+    </form>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Menu Type</th>
+          <th>Rating</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < menus.length; i++) { %>
+        <tr>
+          <td><%= menus[i].id %></td>
+          <td><%= menus[i].name %></td>
+          <td><%= menus[i].menu_type %></td>
+          <td><%= menus[i].rating %></td>
+          <td><%= helpers.format_currency(menus[i].price) %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

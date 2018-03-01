@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../../partials/head %>
+</head>
+<body>
+  <% include ../../partials/header %>
+
+  <div class="container">
+    <% if(status == 1) { %>
+    <div class="alert alert-success">
+      <strong>Success!</strong> <%= message %>
+    </div>
+    <% } else if(status == 0) { %>
+    <div class="alert alert-danger">
+      <strong>Error!</strong> <%= message %>
+    </div>
+    <% } %>
+
+    <h3>List Restaurants</h3>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < restaurants.length; i++) { %>
+        <tr>
+          <td><%= restaurants[i].id %></td>
+          <td><%= restaurants[i].name %></td>
+          <td><%= restaurants[i].address %></td>
+          <td><a href="/restaurants/<%= restaurants[i].id %>/view_menu">View Menu</a></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
