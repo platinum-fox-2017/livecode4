@@ -1,0 +1,34 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Restaurant</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+ <body>
+     <h1>Edit Menu</h1>
+     <% if (err.err != undefined) { %>
+    <p style="color:red"> <%=err.err %>
+        <% } %>
+     <form action="/menus/<%=menu.id%>/edit" method="post">
+        Name:<br>
+        <input type='text' name='name' value='<%=menu.name%>'><br>
+        Menu Type:<br>
+        <input type='text' name='type' value = '<%=menu.menu_type%>'><br>
+        Rating:<br>
+        <input type='text' name='rating' value = '<%=menu.rating%>'><br>
+        Price:<br>
+        <input type='text' name='price' value = '<%=menu.price%>'><br>
+        Restaurant:<br>
+        <select name='RestaurantId'>
+            <%for(let i = 0; i < restaurants.length; i++) {%>
+            <option value='<%=restaurants[i].id%>'
+                <%if (restaurants[i].id==menu.RestaurantId){%>selected<% } %>
+                ><%=restaurants[i].name%></option>
+            <% } %>
+        </select><br>
+        <input type='submit' value='Submit'>
+     </form>
+
+ </body>
