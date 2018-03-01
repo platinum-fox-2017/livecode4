@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Menu Type</th>
+            <th>Rating</th>
+            <th>Price</th>
+            <th>Restaurant Id</th>
+            <th>Action</th>
+        </tr>
+        <%menu.forEach(menu=>{%>
+        <tr>
+            <td><%=menu.id%></td>
+            <td><%=menu.name%></td>
+            <td><%=menu.menu_type%></td>
+            <td><%=menu.rating%></td>
+            <td><%=helper(menu.price)%></td>
+            <td><%=menu.Restaurant.name%></td>
+            <td>
+                <a href='/menus/edit/<%= menu.id %>'>Edit</a> ||
+                <a href='/menus/delete/<%= menu.id %>'>Delete</a>
+            </td>
+        </tr>
+        <%})%>
+    </table>
+    </br>
+    </br>
+    <%if(err !== null){%>
+       <p style= 'color:red'> <%=err%> </p>
+    <%}%>
+    <form action="/menus" method="post">
+        <input type="text" placeholder="name" name="name">
+        <input type="text" placeholder="Menu_type" name="menu_type">
+        <input type="text" placeholder="Rating" name="rating">
+        <input type="text" placeholder="Price" name="price">
+        <select name = "restaurant_id">
+            <%restaurant.forEach(restaurant=>{ %>
+            <option value = "<%=restaurant.id%>"> <%=restaurant.name%> </option>
+            <%})%>
+        </select>
+        <button type="submit"> Submit </button>
+    </form>
+</body>
+</html>

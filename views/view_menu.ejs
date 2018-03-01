@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>search by : </p>
+    <select name = 'select'>
+        <option name = 'name'>name</option>
+        <option>menu</option>
+        <option>type</option>
+        <option>rating</option>
+    </select>
+        <table>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Menu Type</th>
+                    <th>Rating</th>
+                    <th>Price</th>
+                </tr>
+                <%restaurant.Menus.forEach(menu=>{%>
+                <tr>
+                    <td><%=menu.id%></td>
+                    <td><%=menu.name%></td>
+                    <td><%=menu.menu_type%></td>
+                    <td><%=menu.rating%></td>
+                    <td><%=helper(menu.price)%></td>
+                </tr>
+                <%})%>
+            </table>
+</body>
+</html>
