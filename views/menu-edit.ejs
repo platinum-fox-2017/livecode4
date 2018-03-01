@@ -1,0 +1,30 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <% if(err != ''){ %>
+            <p style="color: red"><%= err %></p>
+        <% } %>
+        <form method="POST" action="/menus/<%= menu.id %>/edit">
+            Name:
+            <input type="text" name="name" value="<%= menu.name %>">
+            <br>
+            Menu type:
+            <input type="text" name="menu_type" value="<%= menu.menu_type %>">
+            <br>
+            rating:
+            <input type="text" name="rating" value="<%= menu.rating %>">
+            <br>
+            price:
+            <input type="text" name="price" value="<%= menu.price %>">
+            <br>
+            Restaurant: 
+            <select name="RestaurantId">
+                <option value="<%= menu.RestaurantId %>"><%= restaurant.name %></option>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

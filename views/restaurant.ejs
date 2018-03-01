@@ -1,0 +1,33 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Restaurant Menu System</h1>
+        <table>
+            <th>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Action</td>
+                </tr>
+            </th>
+            <tbody>
+                    <% for(let i=0; i<restaurants.length; i++){ %>
+                        <tr>
+                            <td><%= restaurants[i].id %></td>
+                            <td><%= restaurants[i].name %></td>
+                            <td><%= restaurants[i].address %></td>
+                            <td>
+                                <form style="margin-bottom: 0" method="GET" action="/restaurants/<%= restaurants[i].id %>/view-menu">
+                                    <input type="submit" value="View Menu">
+                                </form>
+                            </td>
+                        </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <br><br>
+    </body>
+</html>

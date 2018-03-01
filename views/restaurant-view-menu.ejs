@@ -1,0 +1,43 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Restaurant Menu System</h1>
+        <form method="GET" action='/restaurant/<%= restaurants.id %>/search'></form>
+        Search by: 
+        <select name="type">
+            <option value="name">name</option>
+            <option value="menu_type">menu_type</option>
+            <option value="rating">rating</option>
+            <option value="price>">price</option>
+        </select>
+        Keyword: 
+        <input type="text" name="search">
+        <br>
+        <input type="submit" value="Submit">
+        <table>
+            <th>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Menu Type</td>
+                    <td>Rating</td>
+                    <td>Price</td>
+                </tr>
+            </th>
+            <tbody>
+                    <% for(let i=0; i<restaurants.Menus.length; i++){ %>
+                        <tr>
+                            <td><%= restaurants.Menus[i].id %></td>
+                            <td><%= restaurants.Menus[i].name %></td>
+                            <td><%= restaurants.Menus[i].menu_type %></td>
+                            <td><%= restaurants.Menus[i].rating %></td>
+                            <td><%= helper.formatUang(restaurants.Menus[i].price) %></td>
+                        </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <br><br>
+    </body>
+</html>
