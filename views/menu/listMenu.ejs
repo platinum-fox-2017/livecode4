@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <table border=1 cellspacing=0 cellpadding=10>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Menu Type</th>
+            <th>Rating</th>
+            <th>Price</th>
+            <th>Restaurant ID</th>
+            <th>Action</th>
+        </tr>
+        <% menus.forEach((list) => { %>
+        <tr>
+            <td><%= list.id %></td>
+            <td><%= list.name %></td>
+            <td><%= list.menu_type %></td>
+            <td><%= list.rating %></td>
+            <td><%= list.price %></td>
+            <td></td>
+            <td><a href="/menu/<%= list.id %>/edit">Edit</a>   <a href="/menu/<%= list.id %>/delete">Delete</a></td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
