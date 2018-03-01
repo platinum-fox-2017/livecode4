@@ -1,0 +1,82 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/styles/css.css">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <%- include('../partial/navigation.ejs') %>
+  <div class="main">
+    <div class="content">
+      <h1><%= header %></h1>
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>menu type</th>
+            <th>Rating </th>
+            <th>Price</th>
+            <th>Restaurant ID</th>
+            <th>Action</th>
+        </tr>
+        <!-- loop -->
+        <% for (let i = 0; i < foundMenus.length; i++) { %>
+          <tr>
+            <td><%= foundMenus[i].id %></td>
+            <td><%= foundMenus[i].name %></td>
+            <td><%= foundMenus[i].menu_type %></td>
+            <td><%= foundMenus[i].rating %></td>
+            <td>Rp.<%= helper.format_currency(foundMenus[i].price) %></td>
+            <td><%= foundMenus[i].Restaurant.name %></td>
+
+            <!-- edit/delete -->
+            <td>
+              <a href="/menus/<%= foundMenus[i].id %>/edit">
+                <button type="button" name="button" >
+                  edit
+                </button>
+              </a>
+              /
+              <a href="/menus/<%= foundMenus[i].id %>/delete" >
+                <button type="button" name="button" onclick="deleteConfirm()">
+                  delete
+                </button>
+              </a>
+            </td>
+          </tr>
+        <% } %>
+
+      </table>
+
+      <% if (err) { %>
+        <h4 style="color:red"><%= err.message %><h4>
+      <% } %>
+      <form action="/menus" method="post">
+        Name:<br>
+        <input type="text" name="name" value=""><br>
+        <br>
+        Menu type:<br>
+        <input type="text" name="menu_type" value=""><br>
+        <br>
+        Rating:<br>
+        <input type="number" name="rating" value=""><br>
+        <br>
+        price:<br>
+        <input type="number" name="price" value=""><br>
+        <br>
+        <select name="RestaurantId">
+          <% for (var i = 0; i < foundRestaurants.length; i++) { %>
+            <option value="<%= foundRestaurants[i].id %>"><%= foundRestaurants[i].name %></option>
+          <% } %>
+
+        </select>
+        <input type="submit" value="Submit">
+      </form>
+
+
+    </div>
+  </div>
+
+</body>
+</html>
