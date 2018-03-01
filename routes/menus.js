@@ -10,7 +10,10 @@ routes.get('/', (req, res) => {
   Models.Menu.findAll({
     include: [{
       model: Models.Restaurant
-    }]
+    }],
+    order: [
+      ['id', 'ASC']
+    ]
   }).then((menus) => {
     Models.Restaurant.findAll()
       .then((restaurants) => {

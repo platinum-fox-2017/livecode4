@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <table>
+      <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Menu Type</th>
+        <th>Rating</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <%menus.forEach((menu) => {%>
+          <tr>
+            <td><%= menu.id%></td>
+            <td><%= menu.name%></td>
+            <td><%= menu.menu_type%></td>
+            <td><%= menu.rating%></td>
+            <td><%= helper.formatUang(menu.price)%></td>
+          </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>
