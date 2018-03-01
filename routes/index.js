@@ -6,5 +6,6 @@ routes.get('/',function(req,res){
 })
 
 routes.use('/menus',require('./menus.js'))
+routes.use('/restaurants',require('./restaurants.js'))
 
 module.exports = routes;
