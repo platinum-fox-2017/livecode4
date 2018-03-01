@@ -1,0 +1,60 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Restaurant</title>
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+ <body>
+     <h1>Menu</h1>
+
+     <h3>List Menu</h3>
+     <table>
+         <tr>
+             <th>Id</th>
+             <th>Name</th>
+             <th>Menu Type</th>
+             <th>Rating</th>
+             <th>Price</th>
+             <th>Restaurant Id</th>
+             <th>Action</th>
+         </tr>
+         <%for (let i = 0; i < menus.length; i++){%>
+             <tr>
+                 <td><%=menus[i].id%></td>
+                 <td><%=menus[i].name%></td>
+                 <td><%=menus[i].menu_type%></td>
+                 <td><%=menus[i].rating%></td>
+                 <td><%=helper.format_currency(menus[i].price)%></td>
+                 <td><%=menus[i].RestaurantId%></td>
+                 <td><a href="/menus/<%=menus[i].id%>/edit">Edit</a></td>
+                 <td><a href="/menus/<%=menus[i].id%>/delete">Delete</a></td>
+             </tr>
+        <% }%>
+
+
+     </table>
+    <h3>Tambah Menu</h3>
+    <% if (err.err != undefined) { %>
+   <p style="color:red"> <%=err.err %>
+       <% } %>
+     <form action="/menus" method="post">
+        Name:<br>
+        <input type='text' name='name'><br>
+        Menu Type:<br>
+        <input type='text' name='type'><br>
+        Rating:<br>
+        <input type='text' name='rating'><br>
+        Price:<br>
+        <input type='text' name='price'><br>
+        Restaurant:<br>
+        <select name='RestaurantId'>
+            <%for(let i = 0; i < restaurants.length; i++) {%>
+            <option value='<%=restaurants[i].id%>'><%=restaurants[i].name%></option>
+            <% } %>
+        </select><br>
+        <input type='submit' value='Submit'>
+     </form>
+
+ </body>
