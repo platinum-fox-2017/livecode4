@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MENUS</title>
+    <h2>MENUS</h2>
+    <a href="/menus/add"> <button type="button" name="button"> ADD MENU </button> </a>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Menu Type</td>
+        <td>Rating</td>
+        <td>Price</td>
+        <td>Nama Restoran</td>
+      </thead>
+      <%dataMenus.forEach(data=>{%>
+      <tr>
+          <td><%=data.id%></td>
+          <td><%=data.name%></td>
+          <td><%=data.menu_type%></td>
+          <td><%=data.rating%></td>
+          <td><%=data.price%></td>
+          <td><%=data.Restaurant.name%></td>
+          <td> <a href="/menus/update/<%=data.id%>">UPDATE</a></td>
+          <td> <a href="/menus/delete/<%=data.id%>">DELETE</a></td>
+        <%})%>
+      </tr>
+    </table>
+  </body>
+</html>
