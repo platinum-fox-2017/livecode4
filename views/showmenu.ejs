@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>WEBSITE</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Menu Type</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Restaurant Id</th>
+                <th>Action</th>
+            </tr>
+            <% for (let i = 0; i < listMenu.length; i++) { %>
+                <tr>
+                    <td><%= listMenu[i].id %></td>
+                    <td><%= listMenu[i].name %></td>
+                    <td><%= listMenu[i].menu_type %></td>
+                    <td><%= listMenu[i].rating %></td>
+                    <td><%= helper.format_currency(listMenu[i].price) %></td>
+                    <td><%= listMenu[i].Restaurant.name %></td>
+                    <td><a href="/menus/<%=listMenu[i].id%>/edit">Edit</a> | <a href="/menus/<%=listMenu[i].id%>/delete">Delete</a></td>
+                </tr>
+            <% } %>
+        </table>
+        ----------------------------------------------------------------------------------------------------------------
+        <br><%= err%><br>
+        <form method="POST">
+            Name: <input type="text" name="name"><br>
+            Menu Type: <input type="text" name="menu_type"><br>
+            Rating: <input type="text" name="rating"><br>
+            Price: <input type="text" name="price"><br>
+            Restaurant:
+            <select name="restaurantId">
+                <option value="1">PHD</option>
+                <option value="2">McDonald</option>
+                <option value="3">KFC</option><br>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+
+
+        
+    </body>
+</html>
