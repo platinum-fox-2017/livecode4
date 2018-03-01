@@ -16,13 +16,24 @@ module.exports = (sequelize, DataTypes) => {
     RestaurantId : DataTypes.INTEGER,
   },{
     hooks:{
-      afterCreate:function(Menu,options){
+      beforeCreate:function(Menu,options){
         console.log(Menu)
-        if(Menu.menu_type === 'food'&& Menu.price === 0 || Menu.price === null){
-          this.price = 15000
+        if(Menu.price == 0 || Menu.price === null){
+          if(Menu.menu_type === 'food'){
+            Menu.price = 15000
+          }else{
+            Menu.price = 10000
+          }
         }
-        else if(Menu.menu_type === 'food'&& Menu.price === 0 || Menu.price === null){
-          this.price = 10000
+      },
+      beforeUpdate:function(Menu,options){
+        console.log(Menu)
+        if(Menu.price == 0 || Menu.price === null){
+          if(Menu.menu_type === 'food'){
+            Menu.price = 15000
+          }else{
+            Menu.price = 10000
+          }
         }
       }}
   });

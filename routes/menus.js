@@ -21,9 +21,7 @@ router.get('/',function(req,res){
 
 router.post('/',function(req,res){
   console.log(req.body)
-  Menu.create(req.body,{
-    individualHook:true
-  }).then(data=>{
+  Menu.create(req.body).then(data=>{
     res.redirect('/menus')
   }).catch(err=>{
     Menu.findAll({
