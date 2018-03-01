@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>View Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+    <h1>Menu</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Menu Type</th>
+                <th>Rating</th>
+                <th>Price</th>
+                <th>Restaurant_Id</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%data.map(val => {%>
+            <tr>
+                <td><%= val.id %></td>
+                <td><%= val.name %></td>
+                <td><%= val.menu_type %></td>
+                <td><%= val.rating %></td>
+                <td><%= helper(Number(val.price)) %></td>
+                <td><%= val.Restaurant.name %></td>
+                <td>
+                    <a href="/menus/<%= val.id %>/edit">Edit</a>
+                    <a href="/menus/<%= val.id %>/delete">Delete</a>
+                </td>
+            </tr>
+            <%})%>
+
+        </tbody>
+    </table>
+
+    <hr>
+    <br>
+    <% if (err) { %>
+        <%= err %>
+    <% } %>
+    <br><br>
+    <form action="/menus" method="POST">
+        <input type="text" name="name" placeholder="name">
+        <br><br>
+        <input type="text" name="menu_type" placeholder="menu_type">
+        <br><br>
+        <input type="number" name="rating" placeholder="rating">
+        <br><br>
+        <input type="text" name="price" placeholder="price">
+        <br><br>
+        <select name="id_restaurant" id="">
+            <%dataRes.map(val => {%>
+                <option value="<%= val.id %>"><%= val.name %></option>
+            <%})%>
+        </select>
+        <br><br>
+        <button type="submit">Add Menu</button>
+    </form>
+</body>
+</html>
