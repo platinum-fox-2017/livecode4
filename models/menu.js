@@ -2,7 +2,15 @@
 module.exports = (sequelize, DataTypes) => {
   var Menu = sequelize.define('Menu', {
     name: DataTypes.STRING,
-    menu_type: DataTypes.STRING,
+    menu_type: {
+      type: DataTypes.STRING,
+      validate: {
+        isIn: {
+          args: [['Food', 'Beverages']],
+          msg: 'Isi menu type dengan Food / Beverages'
+        } 
+      }
+    },
     rating: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     restaurantId: DataTypes.INTEGER

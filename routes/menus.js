@@ -11,9 +11,10 @@ router.get('/', function(request,response) {
     }).then(listMenu => {
         // projects will be an array of all Project instances
         let obj = {
-            listMenu: listMenu
+            listMenu: listMenu,
+            err: request.query.data
         };
-        // response.send(listMenu)
+        // response.send(obj)
         response.render('./showmenu.ejs', obj);
     })
 })
@@ -34,11 +35,16 @@ router.post('/', function(request,response) {
                     response.redirect('/menus')
                 })
                 .catch((err) => {
+                    response.redirect(`/menus?data=${err.message}`)
+                    // response.render('showmenu.ejs', {err: err.message})
                })
 })
 
 router.get('/:id/edit', function(request,response) {
-    response.render('./editmenu.ejs');
+    let obj = {
+        err: request.query.data
+    }
+    response.render('./editmenu.ejs', obj);
 })
 
 router.post('/:id/edit', function(request,response) {
@@ -57,6 +63,10 @@ router.post('/:id/edit', function(request,response) {
                 response.redirect('/menus');
                 console.log('Successfully updated menu data'); 
             })
+            .catch((err) => {
+                response.redirect(`/menus/${id}/edit?data=${err.message}`)
+                // response.render('showmenu.ejs', {err: err.message})
+           })
 
 })
 
