@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <div>
+            <%= err.err %>
+            <form method="POST">
+                Name: <input type="text" name="name" value="<%= menu.name %>">
+                Menu Type: <input type="text" name="menu_type" value="<%= menu.menu_type %>">
+                Rating: <input type="integer" name="rating" value="<%= menu.rating %>">
+                Price: <input type="text" name="price" value="<%= menu.price %>">
+                Restaurant: 
+                <select name="RestaurantId"> 
+                    <% for (let i = 0; i < restaurant.length; i++) { %>
+                        <option value="<%= restaurant[i].id %>"><%= restaurant[i].name %></option>
+                    <% } %>
+                </select>
+                <input type="submit" value="Submit">
+                <button><a href='/menus'>Cancel</a></button>
+            </form>
+        </div>
+    </body>
+</html>
