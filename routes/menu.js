@@ -16,7 +16,8 @@ menu.get('/', (req, res) => {
         })
         .then(foodlist => {
             // res.send(foodlist)
-            res.render('menu.ejs', {menus: foodlist, restaurant: restaurants})
+            // res.send(req.query)
+            res.render('menu.ejs', {menus: foodlist, restaurant: restaurants, err: req.query})
         })
     })
 })
@@ -36,6 +37,9 @@ menu.post('/', (req, res) => {
         console.log(data)
         res.redirect('/menus')
     })
+    .catch(error => {
+        res.redirect(`/menus?err=${error.message}`)
+    })
 })
 
 menu.get('/:id/edit', (req, res) => {
@@ -52,8 +56,8 @@ menu.get('/:id/edit', (req, res) => {
                 price: data.price,
                 RestaurantId: data.RestaurantId
             }
-            res.render('menu-edit.ejs', {menu: obj, restaurant: restaurants})
-            res.send(obj)
+            res.render('menu-edit.ejs', {menu: obj, restaurant: restaurants, err: req.query})
+            // res.send(obj)
         })
     })
 })
@@ -70,6 +74,9 @@ menu.post('/:id/edit', (req, res) => {
     })
     .then(()=>{
         res.redirect('/menus')
+    })
+    .catch(error => {
+        res.redirect(`/menus/${req.params.id}/edit?err=${error.message}`)
     }) 
 })
 
