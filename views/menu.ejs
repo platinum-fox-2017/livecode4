@@ -1,0 +1,66 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Restaurant Menu System</h1>
+        <table>
+            <th>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Menu Type</td>
+                    <td>Rating</td>
+                    <td>Price</td>
+                    <td>Restaurant ID</td>
+                    <td>Action</td>
+                </tr>
+            </th>
+            <tbody>
+                    <% for(let i=0; i<menus.length; i++){ %>
+                        <tr>
+                            <td><%= menus[i].id %></td>
+                            <td><%= menus[i].name %></td>
+                            <td><%= menus[i].menu_type %></td>
+                            <td><%= menus[i].rating %></td>
+                            <td><%= helper.formatUang(menus[i].price) %></td>
+                            <td><%= menus[i].RestaurantId %></td>
+                            <td>
+                                <form style="margin-bottom: 0" method="GET" action="/menus/<%= menus[i].id %>/edit">
+                                    <input type="submit" value="Edit">
+                                </form>
+                            </td>
+                            <td>
+                                <form style="margin-bottom: 0" method="POST" action="/menus/<%= menus[i].id %>/delete">
+                                    <input type="submit" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <br><br>
+        <form method="POST" action="/menus">
+            Name:
+            <input type="text" name="name">
+            <br>
+            Menu type:
+            <input type="text" name="menu_type">
+            <br>
+            rating:
+            <input type="text" name="rating">
+            <br>
+            price:
+            <input type="text" name="price">
+            <br>
+            Restaurant: 
+            <select name="RestaurantId">
+                <% for(let i=0; i<restaurants.length; i++) { %>
+                    <option value="<%= restaurants[i].id %>"><%= restaurants[i].name %></option>
+                <% } %>
+            </select>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
