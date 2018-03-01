@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+
+    <h1>
+       Menu Restaurant: <%= dataRes.name %>
+    </h1>
+
+    <form action="/restaurants/<%= dataRes.id %>/search" method="post">
+        Search
+        <select name="type_search" id="">
+            <option value="name">name</option>
+            <option value="menu_type">menu_type</option>
+            <option value="rating">rating</option>
+            <option value="price">price</option>
+        </select>
+        Keyword: <input type="text" name="input" placeholder="">
+        <button type="submit">Find</button>
+    </form>
+    <br>
+    <hr>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Menu Type</th>
+                <th>Rating</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%data.map(val => {%>
+            <tr>
+                <td><%= val.id %></td>
+                <td><%= val.name %></td>
+                <td><%= val.menu_type %></td>
+                <td><%= val.rating %></td>
+                <td><%= helper(Number(val.price)) %></td>
+            </tr>
+            <%})%>
+
+        </tbody>
+    </table>
+
+</body>
+</html>
