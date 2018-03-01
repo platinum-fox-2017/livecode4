@@ -12,7 +12,8 @@ Router.get('/',(req,res)=>[
             res.render('Menu/menu',{
                 dataMenu: menuAllData,
                 restaurantData: restaurantData,
-                err: null
+                err: null,
+                helper: require('../helpers/numberMoney')
             })
         })
     })
@@ -37,7 +38,6 @@ Router.post('/',(req,res)=>{
             hasil[each.path] = each.message
             return hasil
         },{})
-        console.log(err)
         Menu.findAll({
             include:[{model:Restaurant,attributes: ['name']}]
         }).then(menuAllData=>{
@@ -45,7 +45,8 @@ Router.post('/',(req,res)=>{
                 res.render('Menu/menu',{
                     dataMenu: menuAllData,
                     restaurantData: restaurantData,
-                    err: errors
+                    err: errors,
+                    helper: require('../helpers/numberMoney')
                 })
             })
         })
