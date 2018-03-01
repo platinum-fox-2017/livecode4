@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Menu Edit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <%= err %>
+        <form action="/menus/<%=data.id %>/edit" method="post">
+            Menu:
+            <br>
+            <input type="text" name="menu" value="<%=data.name%>">
+            <br> Menu Type:
+            <br>
+            <input type="text" name="menutype" value="<%=data.menu_type%>">
+            <br> rating:
+            <br>
+            <input type="text" name="rating" value="<%=data.rating%>">
+            <br> price:
+            <br>
+            <input type="text" name="price" value="<%=data.price%>">
+            <br> Restaurant:
+            <br>
+            <select name="restaurantId">
+                <%dataRestaurant.map((dataRestaurant)=>{ %>
+                    <% if (dataRestaurant.id === data.restaurantId){ %>
+                        <option value="<%=dataRestaurant.id%>" selected>
+                            <%=dataRestaurant.name%>
+                        </option>
+                        <% }else{ %>
+                            <option value="<%=dataRestaurant.id%>">
+                                <%=dataRestaurant.name%>
+                            </option>
+                            <%}%>
+                                <% })%>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+</body>
+
+</html>
