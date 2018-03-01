@@ -1,0 +1,32 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/menus">Menu</a></br>
+    <a href="/restaurants">Restaurant</a>
+    <h2>List Restaurant</h2></br>
+    <table>
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <% if(data!==null){ %>
+          <% for(let i=0; i<data.length; i++){ %>
+            <tr>
+              <td><%= data[i].id %><td>
+              <td><%= data[i].name %><td>
+              <td><%= data[i].address %><td>
+              <td>
+                <a href="/restaurants/<%= data[i].id %>/menu">View Menu</a>
+              </td>
+            </tr>
+          <% } %>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <a href="/menus">Menu</a></br>
+    <a href="/restaurants">Restaurant</a>
+    <h2>List Menu</h2>
+    <table>
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Menu Type</th>
+        <th>Rating</th>
+        <th>Price</th>
+        <th>Restaurant ID</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <% if(obj.data!==null){ %>
+          <% for(let i=0; i<obj.data.length; i++){ %>
+            <tr>
+              <td><%= obj.data[i].id %><td>
+              <td><%= obj.data[i].name %><td>
+              <td><%= obj.data[i].menu_type %><td>
+              <td><%= obj.data[i].rating %><td>
+              <td><%= obj.data[i].price %><td>
+              <td><%= obj.data[i].Restaurant.name %><td>
+              <td>
+                <a href="/menus/<%= obj.data[i].id %>/edit">Edit</a>
+                <a href="/menus/<%= obj.data[i].id %>/delete">Delete</a>
+              </td>
+            </tr>
+          <% } %>
+        <% } %>
+      </tbody>
+    </table>
+    <%= err %>
+    <form action="" method="post">
+      <input type="text" value="" name="newName" placeholder="add name">
+      <input type="text" value="" name="newMenuType" placeholder="add menu type">
+      <input type="text" value="" name="newRating" placeholder="add rating">
+      <input type="text" value="" name="newPrice" placeholder="add price">
+      <select name="newResId">
+        <option value="1">Hokben</option>
+        <option value="2">Mekdi</option>
+        <option value="3">Kaefci</option>
+      </select>
+      <input type="submit">
+    </form>
+  </body>
+</html>
