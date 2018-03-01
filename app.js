@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const index = require('./routes/index')
 const menus = require('./routes/menus')
 
+app.locals.helper = require('./helpers/formatuang.js')
 app.use(bodyParser.urlencoded({extended: false}))
 app.set('view engine', 'ejs')
 

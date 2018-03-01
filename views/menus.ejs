@@ -17,8 +17,8 @@
             <td><%= menu.name%></td>
             <td><%= menu.menu_type%></td>
             <td><%= menu.rating%></td>
-            <td><%= menu.price%></td>
-            <td><%= menu.RestaurantId%></td>
+            <td><%= helper.formatUang(menu.price)%></td>
+            <td><%= menu.Restaurant.name%></td>
             <td>
                 <a href="/menus/<%= menu.id %>/edit">edit</a>
                 <a href="/menus/<%= menu.id %>/delete"onclick="return confirm('Are you sure you want to delete:\n<%= menu.id%>. <%= menu.name%>\n')">delete</a>

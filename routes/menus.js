@@ -10,7 +10,7 @@ routes.get('/', (req, res) => {
   }).then((menus) => {
     Models.Restaurant.findAll()
       .then((restaurants) => {
-        // res.send(restaurants)
+        // res.send(menus)
         res.render('menus.ejs', {restaurants: restaurants, menus: menus})
       }).catch(err => {
         console.log(err)

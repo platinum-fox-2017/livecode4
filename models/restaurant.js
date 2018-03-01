@@ -8,4 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     Restaurant.hasMany(models.Menu)
   };
   return Restaurant;
+
+  Restaurant.prototype.getRestaurantName = function() {
+    return `${this.name}`
+  }
 };
