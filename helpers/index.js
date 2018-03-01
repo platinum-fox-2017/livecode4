@@ -1,5 +1,5 @@
 format_currency = (num) => {
-  return `Rp. ${num.toLocaleString()}`;
+  return `Rp. ${Number(num).toLocaleString()}`;
 }
 module.exports = {
   format_currency: format_currency
