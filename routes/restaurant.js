@@ -20,41 +20,41 @@ router.get('/:id/view_menu', (req,res) => {
     })
 })
 
-router.get('/:id/search', (req,res) => {
+router.post('/:id/search', (req,res) => {
     let keys = req.body.search_type;
     let search = req.body.search;
     console.log("KEys" + keys);
     console.log("searcgh" + search);
 
-    // models.Restaurant.findById(req.params.id,{
-    //     include:[{
-    //         model:models.Menu
-    //     }]
-    // }).then(restaurant => {
-    //     models.Menu.findAll({
-    //         where:{
-    //             RestaurantId:req.params.id,
-    //             [keys]:{
-    //                 [op.iLike]: '%'+search+'%'
-    //             }
-    //         }
-    //     }).then((menus) => {
-    //         res.send(menus);
-    //         // res.render('./restaurant/restaurant-search',{restaurant: restaurant,menus:menus});
-    //     })
-    // });
-
-    models.Menu.findAll({
-        where:{
-            RestaurantId:req.params.id,
-            [keys]:{
-                [op.iLike]: '%'+search+'%'
+    models.Restaurant.findById(req.params.id,{
+        include:[{
+            model:models.Menu
+        }]
+    }).then(restaurant => {
+        models.Menu.findAll({
+            where:{
+                RestaurantId:req.params.id,
+                [keys]:{
+                    [op.iLike]: '%'+search+'%'
+                }
             }
-        }
-    }).then((menus) => {
-        res.send(menus)
-        // res.render('./restaurant/restaurant-search',{menus: menus});
-    })
+        }).then((menus) => {
+            // res.send(menus);
+            res.render('./restaurant/restaurant-search',{restaurant: restaurant,menus:menus});
+        })
+    });
+
+    // models.Menu.findAll({
+    //     where:{
+    //         RestaurantId:req.params.id,
+    //         [keys]:{
+    //             [op.iLike]: '%'+search+'%'
+    //         }
+    //     }
+    // }).then((menus) => {
+    //     res.send(menus)
+    //     // res.render('./restaurant/restaurant-search',{menus: menus});
+    // })
 })
 
 
