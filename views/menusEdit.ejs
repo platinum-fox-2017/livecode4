@@ -1,0 +1,51 @@
+
+
+<div>
+    <h1>Menus Edit</h1>
+</div>
+
+<div>
+    <form method="post">
+        <table>
+            <tr>
+                <th style="color:red"><%=err%></th>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>:</th>
+                <th><input name="name" type="text" value="<%=menu.name%>"></th>
+            </tr>
+            <tr>
+                <th>Menu Type</th>
+                <th>:</th>
+                <th><input name="menu_type" type="text" value="<%=menu.menu_type%>"></th>
+            </tr>
+            <tr>
+                <th>Rating</th>
+                <th>:</th>
+                <th><input name="rating" type="text" value="<%=menu.rating%>"></th>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <th>:</th>
+                <th><input name="price" type="text" value="<%=menu.price%>"></th>
+            </tr>
+            <tr>
+                <th>Restaurant</th>
+                <th>:</th>
+                <th>
+                    <select name="RestaurantId">
+                        <%restaurants.forEach(restaurant => {%>
+                            <option value="<%=restaurant.id%>"><%=restaurant.name%></option>
+                        <%})%>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+                <th><input type="submit" value="Submit"></th>
+            </tr>
+        </table>
+    </form>
+</div>
